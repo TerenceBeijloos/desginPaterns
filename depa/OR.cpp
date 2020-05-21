@@ -1,33 +1,32 @@
-#include "AND.h"
+#include "OR.h"
 #include <string>
 
 #include <iostream>
 
-AND AND::Instance( STR_AND );
+OR OR::Instance( STR_OR );
 
-AND::AND()
+OR::OR()
 {
     std::cout << "in default constructor Afgeleide" << std::endl;
 }
 
-AND::AND( std::string id ) : Node( id )
+OR::OR( std::string id ) : Node( id )
 {
     std::cout << "in assignment constructor Afgeleide" << std::endl;
 }
 
-AND::~AND()
+OR::~OR()
 {
     std::cout << "in destructor Afgeleide" << std::endl;
 }
 
-bool AND::compareValues(std::vector<bool>inputValues)
+bool OR::compareValues(std::vector<bool>inputValues)
 {
     std::cout << "---> in actie Afgeleide" << std::endl;
-
     return true;
 }
 
-Node* AND::clone() const
+Node* OR::clone() const
 {
-    return new AND;
+    return new OR;
 }

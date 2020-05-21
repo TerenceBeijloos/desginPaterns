@@ -139,19 +139,38 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AND.cpp" />
+    <ClCompile Include="Circuit.cpp" />
+    <ClCompile Include="InputFileHandler.cpp" />
+    <ClCompile Include="InputNode.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NAND.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="NOR.cpp" />
+    <ClCompile Include="NOT.cpp" />
+    <ClCompile Include="OR.cpp" />
+    <ClCompile Include="OutputFileHandler.cpp" />
+    <ClCompile Include="ProbeNode.cpp" />
+    <ClCompile Include="Simulation.cpp" />
+    <ClCompile Include="XOR.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AND.h" />
+    <ClInclude Include="Circuit.h" />
+    <ClInclude Include="Defines.h" />
     <ClInclude Include="factoryMethod.h" />
     <ClInclude Include="factoryMethode.hpp" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="InputFileHandler.h" />
     <ClInclude Include="InputNode.h" />
     <ClInclude Include="NAND.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="NOR.h" />
     <ClInclude Include="NOT.h" />
     <ClInclude Include="OR.h" />
+    <ClInclude Include="Output.h" />
+    <ClInclude Include="OutputFileHandler.h" />
     <ClInclude Include="ProbeNode.h" />
+    <ClInclude Include="Simulation.h" />
     <ClInclude Include="XOR.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

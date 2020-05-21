@@ -1,33 +1,32 @@
-#include "AND.h"
+#include "NOT.h"
 #include <string>
 
 #include <iostream>
 
-AND AND::Instance( STR_AND );
+NOT NOT::Instance( STR_NOT );
 
-AND::AND()
+NOT::NOT()
 {
     std::cout << "in default constructor Afgeleide" << std::endl;
 }
 
-AND::AND( std::string id ) : Node( id )
+NOT::NOT( std::string id ) : Node( id )
 {
     std::cout << "in assignment constructor Afgeleide" << std::endl;
 }
 
-AND::~AND()
+NOT::~NOT()
 {
     std::cout << "in destructor Afgeleide" << std::endl;
 }
 
-bool AND::compareValues(std::vector<bool>inputValues)
+bool NOT::compareValues(std::vector<bool>inputValues)
 {
     std::cout << "---> in actie Afgeleide" << std::endl;
-
     return true;
 }
 
-Node* AND::clone() const
+Node* NOT::clone() const
 {
-    return new AND;
+    return new NOT;
 }

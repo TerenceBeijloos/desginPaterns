@@ -1,33 +1,32 @@
-#include "AND.h"
+#include "NOR.h"
 #include <string>
 
 #include <iostream>
 
-AND AND::Instance( STR_AND );
+NOR NOR::Instance( STR_NOR );
 
-AND::AND()
+NOR::NOR()
 {
     std::cout << "in default constructor Afgeleide" << std::endl;
 }
 
-AND::AND( std::string id ) : Node( id )
+NOR::NOR( std::string id ) : Node( id )
 {
     std::cout << "in assignment constructor Afgeleide" << std::endl;
 }
 
-AND::~AND()
+NOR::~NOR()
 {
     std::cout << "in destructor Afgeleide" << std::endl;
 }
 
-bool AND::compareValues(std::vector<bool>inputValues)
+bool NOR::compareValues(std::vector<bool>inputValues)
 {
     std::cout << "---> in actie Afgeleide" << std::endl;
-
     return true;
 }
 
-Node* AND::clone() const
+Node* NOR::clone() const
 {
-    return new AND;
+    return new NOR;
 }

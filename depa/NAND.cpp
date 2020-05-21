@@ -1,33 +1,33 @@
-#include "AND.h"
-#include <string>
+#include "NAND.h"
 
 #include <iostream>
+#include <string>
 
-AND AND::Instance( STR_AND );
+NAND NAND::Instance( STR_NAND );
 
-AND::AND()
+NAND::NAND()
 {
     std::cout << "in default constructor Afgeleide" << std::endl;
 }
 
-AND::AND( std::string id ) : Node( id )
+NAND::NAND( std::string id ) : Node( id )
 {
     std::cout << "in assignment constructor Afgeleide" << std::endl;
 }
 
-AND::~AND()
+NAND::~NAND()
 {
     std::cout << "in destructor Afgeleide" << std::endl;
 }
 
-bool AND::compareValues(std::vector<bool>inputValues)
+bool NAND::compareValues(std::vector<bool>inputValues)
 {
     std::cout << "---> in actie Afgeleide" << std::endl;
 
     return true;
 }
 
-Node* AND::clone() const
+Node* NAND::clone() const
 {
-    return new AND;
+    return new NAND;
 }

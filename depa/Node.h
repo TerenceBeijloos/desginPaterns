@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 class Node
 {
@@ -7,6 +8,6 @@ protected:
                     Node( int id);
 public:
     virtual        ~Node();
-    virtual bool compareValues(bool inputValues[]);
+    virtual bool compareValues(std::vector<bool>inputValues);
     virtual Node  *clone() const   = 0;
 };

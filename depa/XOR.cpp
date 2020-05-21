@@ -1,33 +1,31 @@
-#include "AND.h"
-#include <string>
+#include "XOR.h"
 
 #include <iostream>
 
-AND AND::Instance( STR_AND );
+XOR XOR::Instance( STR_XOR );
 
-AND::AND()
+XOR::XOR()
 {
     std::cout << "in default constructor Afgeleide" << std::endl;
 }
 
-AND::AND( std::string id ) : Node( id )
+XOR::XOR( std::string id ) : Node( id )
 {
     std::cout << "in assignment constructor Afgeleide" << std::endl;
 }
 
-AND::~AND()
+XOR::~XOR()
 {
     std::cout << "in destructor Afgeleide" << std::endl;
 }
 
-bool AND::compareValues(std::vector<bool>inputValues)
+bool XOR::compareValues(std::vector<bool>inputValues)
 {
     std::cout << "---> in actie Afgeleide" << std::endl;
-
     return true;
 }
 
-Node* AND::clone() const
+Node* XOR::clone() const
 {
-    return new AND;
+    return new XOR;
 }

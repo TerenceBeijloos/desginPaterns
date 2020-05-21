@@ -25,6 +25,18 @@
     <Filter Include="Source Files\logicGates">
       <UniqueIdentifier>{a37c233d-99ac-4a87-963b-7d08392489a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Nodes">
+      <UniqueIdentifier>{b54fd6c8-6f84-4a71-ae84-419c377c2431}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Interfaces">
+      <UniqueIdentifier>{24e13104-dacf-4981-aa35-bfed4711cbd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FileHandlers">
+      <UniqueIdentifier>{e8311022-5ff1-4fea-aedf-c8fba316d61e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileHandlers">
+      <UniqueIdentifier>{d7dc791c-e816-4b60-a4d1-0abbec5bcbad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -32,6 +44,42 @@
     </ClCompile>
     <ClCompile Include="AND.cpp">
       <Filter>Source Files\logicGates</Filter>
+    </ClCompile>
+    <ClCompile Include="XOR.cpp">
+      <Filter>Source Files\logicGates</Filter>
+    </ClCompile>
+    <ClCompile Include="NOT.cpp">
+      <Filter>Source Files\logicGates</Filter>
+    </ClCompile>
+    <ClCompile Include="OR.cpp">
+      <Filter>Source Files\logicGates</Filter>
+    </ClCompile>
+    <ClCompile Include="NAND.cpp">
+      <Filter>Source Files\logicGates</Filter>
+    </ClCompile>
+    <ClCompile Include="NOR.cpp">
+      <Filter>Source Files\logicGates</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>Source Files\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="ProbeNode.cpp">
+      <Filter>Source Files\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="InputNode.cpp">
+      <Filter>Source Files\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="Circuit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Simulation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputFileHandler.cpp">
+      <Filter>Source Files\FileHandlers</Filter>
+    </ClCompile>
+    <ClCompile Include="OutputFileHandler.cpp">
+      <Filter>Source Files\FileHandlers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +115,27 @@
     </ClInclude>
     <ClInclude Include="XOR.h">
       <Filter>Header Files\logicGates</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Output.h">
+      <Filter>Header Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Circuit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Simulation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputFileHandler.h">
+      <Filter>Header Files\FileHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputFileHandler.h">
+      <Filter>Header Files\FileHandlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Defines.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
