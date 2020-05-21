@@ -11,13 +11,16 @@ Circuit::~Circuit()
 {
 }
 
-void Circuit::addComponent(std::string strNode)
+void Circuit::addComponent(std::string strNode, std::string newNodeID)
 {
+    std::vector<bool> inputValues;
+
 	Node  *pNode  = Factory::FactoryMethod<std::string,Node>::create( strNode );
 
     if ( pNode != nullptr )
     {
-		pNode->compareValues();
+        pNode->setNodeID(newNodeID);
+		pNode->compareValues(inputValues);
 
         delete pNode;
     }

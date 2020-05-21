@@ -1,21 +1,28 @@
-#include "FactoryMethod.h"
-#include "Node.h"
+#include "Circuit.h"
 
 #include <iostream>
+#include "Defines.h"
+#include <vector>
+#include "Input.h"
 
 int main()
 {
-    Node  *pNode  = Factory::FactoryMethod<int,Node>::create( 1 );
+    Input i;
+    i.addInput("hoi");
+    i.addInput("doei");
 
-    if ( pNode != nullptr )
+    i.setInput("hoi", true);
+    i.setInput("doei", true);
+
+    for (const auto &p : i.iterateObj())
     {
-        pNode->compareValues();
-
-        delete pNode;
+        std::cout << p.first << '\t' << p.second;
     }
+    //Circuit circuit;
+
+    //circuit.addComponent(STR_AND, "NODE1");
 
     std::cin.get();
 
     return 0;
 }
-

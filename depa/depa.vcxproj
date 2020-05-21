@@ -138,8 +138,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AdjList.cpp" />
     <ClCompile Include="AND.cpp" />
     <ClCompile Include="Circuit.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputFileHandler.cpp" />
     <ClCompile Include="InputNode.cpp" />
     <ClCompile Include="main.cpp" />
@@ -148,17 +150,19 @@
     <ClCompile Include="NOR.cpp" />
     <ClCompile Include="NOT.cpp" />
     <ClCompile Include="OR.cpp" />
+    <ClCompile Include="Output.cpp" />
     <ClCompile Include="OutputFileHandler.cpp" />
     <ClCompile Include="ProbeNode.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="XOR.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AdjList.h" />
     <ClInclude Include="AND.h" />
     <ClInclude Include="Circuit.h" />
     <ClInclude Include="Defines.h" />
     <ClInclude Include="factoryMethod.h" />
-    <ClInclude Include="factoryMethode.hpp" />
+    <ClInclude Include="factoryMethod.hpp" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputFileHandler.h" />
     <ClInclude Include="InputNode.h" />
@@ -172,6 +176,9 @@
     <ClInclude Include="ProbeNode.h" />
     <ClInclude Include="Simulation.h" />
     <ClInclude Include="XOR.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="circuit1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

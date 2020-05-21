@@ -1,4 +1,7 @@
 #pragma once
+#include <string>
+#include <list>
+
 
 class Circuit
 {
@@ -6,8 +9,8 @@ public:
 	Circuit();
 	virtual ~Circuit();
 
-	void Circuit::addComponent(std::string strNode);
+	void addComponent(std::string strNode, std::string newNodeID);
 
 private:
-
+	
 };

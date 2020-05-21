@@ -5,7 +5,7 @@
 
 namespace Factory
 {
-    template <typename ID, typename Class>
+    template <typename nodeType, typename Class>
     class FactoryMethod
     {
     private:
@@ -13,16 +13,17 @@ namespace Factory
         virtual            ~FactoryMethod() = default;
 
     private:
-        static  void        assign(const ID&, const Class*);
+        static  void        assign(const nodeType&, const Class*);
     public:
-        static  Class* create(const ID&);
+        static  Class* create(const nodeType&);
 
     private:
-        typedef std::map<ID, const Class*> FactoryMap;
+        typedef std::map<nodeType, const Class*> FactoryMap;
 
         static  FactoryMap& getMap();
 
     private:
         friend Class;
     };
+#include "factoryMethod.hpp"
 }

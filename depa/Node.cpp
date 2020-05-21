@@ -5,26 +5,32 @@
 #include "FactoryMethod.h"
 
 #include <iostream>
+#include <string>
 
 Node::Node()
 {
-    std::cout << "in default constructor Basis" << std::endl;
+    std::cout << "in default constructor Node" << std::endl;
 }
 
-Node::Node( int id )
+Node::Node( std::string id )
 {
-    Factory::FactoryMethod<int,Node>::assign( id, this );
+    Factory::FactoryMethod<std::string,Node>::assign( id, this );
 
-    std::cout << "in assignment constructor Basis" << std::endl;
+    std::cout << "in assignment constructor Node" << std::endl;
 }
 
 Node::~Node()
 {
-    std::cout << "in destructor Basis" << std::endl;
+    std::cout << "in destructor Node" << std::endl;
 }
 
 bool Node::compareValues(std::vector<bool>inputValues)
 {
-    std::cout << "---> in compareValues Basis" << std::endl;
+    std::cout << "---> in compareValues Node" << std::endl;
     return true;
+}
+
+void Node::setNodeID(std::string newNodeID)
+{
+    nodeID = newNodeID;
 }
