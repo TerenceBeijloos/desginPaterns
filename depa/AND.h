@@ -11,12 +11,12 @@ private:
     AND( int id);
 
     static AND Instance;
-    std::vector<bool> inputValues;
+    std::vector<bool>inputValues;
 	bool result;
 
 public:
     virtual  ~AND();
 
-    bool compareValues(bool inputValues[]) override;
+    bool compareValues(std::vector<bool>inputValues[]) override;
     Node *clone() const  override;   
  };
