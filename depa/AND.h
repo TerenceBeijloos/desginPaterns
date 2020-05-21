@@ -14,18 +14,17 @@ private:
 };
 
 
-#ifndef __Afgeleide
-#define __Afgeleide
 
-#include "Basis.h"
 
-class Afgeleide : public  Basis
+#include "Node.h"
+
+class AND : public  NODE
 {
 private:
-                        Afgeleide();
-                        Afgeleide( int );
+                        AND();
+                        AND( int );
 public:
-    virtual            ~Afgeleide();
+    virtual            ~NODE();
 
 public:
             void        actie()         override;
@@ -36,4 +35,4 @@ private:
     static Afgeleide    m_cInstance;
 };
 
-#endif
+
