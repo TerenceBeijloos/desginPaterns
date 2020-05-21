@@ -13,33 +13,60 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\logic_gates">
+    <Filter Include="Header Files\logicGates">
       <UniqueIdentifier>{6736e7b8-bae5-4c71-800f-d2cfb776a0a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\factoryMethodes">
+      <UniqueIdentifier>{a0e989c5-6bb4-4ce5-96ca-239cf2b4df6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Node">
+      <UniqueIdentifier>{c82a8745-09be-48a1-a25b-0759e161b52d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\logicGates">
+      <UniqueIdentifier>{a37c233d-99ac-4a87-963b-7d08392489a9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AND.cpp">
+      <Filter>Source Files\logicGates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AND.h">
-      <Filter>Header Files\logic_gates</Filter>
+      <Filter>Header Files\logicGates</Filter>
     </ClInclude>
     <ClInclude Include="NOR.h">
-      <Filter>Header Files\logic_gates</Filter>
+      <Filter>Header Files\logicGates</Filter>
     </ClInclude>
     <ClInclude Include="NOT.h">
-      <Filter>Header Files\logic_gates</Filter>
+      <Filter>Header Files\logicGates</Filter>
     </ClInclude>
     <ClInclude Include="OR.h">
-      <Filter>Header Files\logic_gates</Filter>
-    </ClInclude>
-    <ClInclude Include="XOR.h">
-      <Filter>Header Files\logic_gates</Filter>
+      <Filter>Header Files\logicGates</Filter>
     </ClInclude>
     <ClInclude Include="NAND.h">
-      <Filter>Header Files\logic_gates</Filter>
+      <Filter>Header Files\logicGates</Filter>
+    </ClInclude>
+    <ClInclude Include="factoryMethod.h">
+      <Filter>Header Files\factoryMethodes</Filter>
+    </ClInclude>
+    <ClInclude Include="factoryMethode.hpp">
+      <Filter>Header Files\factoryMethodes</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Header Files\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="ProbeNode.h">
+      <Filter>Header Files\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="InputNode.h">
+      <Filter>Header Files\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="XOR.h">
+      <Filter>Header Files\logicGates</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

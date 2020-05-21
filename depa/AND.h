@@ -1,38 +1,22 @@
 #pragma once
 
-#define INPUTS 10;
-
-class AND :: public Node {
-public:
-	AND();
-	virtual ~AND();
-	bool compareValues(bool inputValues[]);
-
-private:
-	bool inputValues[INPUTS];
-	bool result;
-};
-
-
-
-
 #include "Node.h"
+#include <vector>
 
-class AND : public  NODE
+class AND : public  Node
 {
-private:
-                        AND();
-                        AND( int );
-public:
-    virtual            ~NODE();
-
-public:
-            void        actie()         override;
-
-            Basis      *clone() const   override;
 
 private:
-    static Afgeleide    m_cInstance;
-};
+    AND();
+    AND( int id);
 
+    static AND Instance;
+    std::vector<bool> inputValues;
+	bool result;
 
+public:
+    virtual  ~AND();
+
+    bool compareValues(bool inputValues[]) override;
+    Node *clone() const  override;   
+ };

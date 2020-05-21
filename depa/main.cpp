@@ -1,17 +1,17 @@
 #include "FactoryMethod.h"
-#include "Basis.h"
+#include "Node.h"
 
 #include <iostream>
 
 int main()
 {
-    Basis  *pBasis  = Factory::FactoryMethod<int,Basis>::create( 1 );
+    Node  *pNode  = Factory::FactoryMethod<int,Node>::create( 1 );
 
-    if ( pBasis != nullptr )
+    if ( pNode != nullptr )
     {
-        pBasis->actie();
+        pNode->compareValues();
 
-        delete pBasis;
+        delete pNode;
     }
 
     std::cin.get();
