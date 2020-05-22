@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <list>
+#include "NodeDatabase.h"
 
 
 class Circuit
@@ -12,5 +12,5 @@ public:
 	void addComponent(std::string strNode, std::string newNodeID);
 
 private:
-	
+	NodeDatabase nodeCircuit;
 };

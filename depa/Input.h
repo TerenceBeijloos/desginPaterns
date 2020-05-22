@@ -12,7 +12,7 @@ public:
 	bool getInput(const std::string& index) const;
 	bool setInput(const std::string& index, bool value);
 	bool addInput(const std::string& index);
-	const std::map<std::string, bool>& iterateObj() const;
+	const std::map<std::string, bool>& const iterateObj() const;
 
 private:
 	bool indexExists(const std::string& index) const;

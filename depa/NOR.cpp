@@ -20,23 +20,28 @@ NOR::~NOR()
     std::cout << "in destructor NOR" << std::endl;
 }
 
-bool NOR::compareValues(std::vector<bool>inputValues)
+bool NOR::compareValues()
 {
-    std::cout << "---> in actie NOR" << std::endl;
+    IoState result = LOW;
 
-    if (inputValues.size() < 1)
-    {
-        return false;
-	}
+    for (const auto& p : this->getInputs()) {
+        if (p->getOutput() == UNDF)
+        {
+            this->setOutput(UNDF);
+            return false;
+        }
 
-    for(int i = 0; i < inputValues.size(); i++)
-    {
-      if(inputValues.at(i) == false)
-      {
-        return true;
-	  }
-	}
-    return false;
+        if (p->getOutput() == HIGH)
+        {
+            result = LOW;
+        }
+
+    }
+
+    this->setOutput(result);
+    this->onEventOutput();
+
+    return true;
 }
 
 Node* NOR::clone() const

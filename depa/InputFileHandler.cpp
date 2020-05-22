@@ -2,47 +2,99 @@
 
 InputFileHandler::InputFileHandler()
 {
-	InputFile.open("circuit1.txt");
 }
 
 InputFileHandler::~InputFileHandler()
 {
-	InputFile.close();
 }
 
-void InputFileHandler::getNodeDescriptions(std::string string[], std::string nodeType[])
+void InputFileHandler::getNodeDescriptions(std::string InputFileName)
 {
 	std::string line;
 	bool flag = false;
-	int nodeCount = 0;
-	while(std::getline(InputFile, line))
-	{
-		if(line.at(0) == '#') // filter out comments
-		{
-			break;
-		}
+	char name[255] = { 0 }, desc[255] = { 0 };
+	std::string nodeName;
+	std::string nodeDesc;
+	int indexn = 0, indexd = 0;
 
-		for(int i = 0; i < line.length(); i++){
-			if(line.at(i) == "#"
-			if(line.at(i) == ":")
+	std::ifstream InputFile;
+
+	InputFile.open(InputFileName);
+
+	while (std::getline(InputFile, line))
+	{
+		flag = false;
+
+		for (int i = 0; i < line.size() - 1; i++)
+		{
+			if (line.at(i) == '#')
+			{
+				break;
+			}
+			if (line.at(i) == ':')
 			{
 				flag = true;
-				i++;
 			}
-			if ( flag == true) 
+			if ((flag == false) && (!std::isspace(line.at(i))))
 			{
-				nodes.push_back();
+				name[indexn] = line.at(i);
+				indexn++;
 			}
-			else if (flag == false)
+			else if ((flag == true) && (!std::isspace(line.at(i))))
 			{
-				nodes.at()
+				desc[indexd] = line.at(i);
+				indexd++;
 			}
 		}
 
+		indexn = 0;
+		indexd = 0;
+		std::fill(name,name+10,NULL);
+		std::fill(desc,desc+10,NULL);
+
+		nodeName = name;
+		nodeDesc = desc;
+
+		edgeOrNode(nodeName, nodeDesc);
+
+		std::cout << "FILE input node:  " << nodeName << "  " << nodeDesc << std::endl; //TEST
 	}
+
+	InputFile.close();
 }
 
-void InputFileHandler::getNodeEdges(std::string& stringIn, std::string& stringOut)
+std::vector<std::vector<std::string> > InputFileHandler::getNodeDescriptionsVector()
 {
+	return this->nodes;
+}
 
+std::vector<std::vector<std::string> > InputFileHandler::getNodeEdgesVector()
+{
+	return this->edges;
+}
+
+void InputFileHandler::edgeOrNode(std::string nodeName, std::string nodeDesc)
+{
+	bool edge = true;
+
+	for (int i = 0; i < nodes.size(); i++)
+	{
+		if (nodeName == nodes[0].at(i))
+		{
+			edge = true;
+			break;
+		}
+	}
+
+	if (edge)
+	{
+		this->edges[0].push_back(nodeName);
+		this->edges[1].push_back(nodeDesc);
+		edge = false;
+	}
+	else
+	{
+		this->nodes[0].push_back(nodeName);
+		this->nodes[1].push_back(nodeDesc);
+	}
 }

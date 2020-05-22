@@ -138,7 +138,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AdjList.cpp" />
+    <ClCompile Include="NodeDatabase.cpp" />
     <ClCompile Include="AND.cpp" />
     <ClCompile Include="Circuit.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -157,7 +157,7 @@
     <ClCompile Include="XOR.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AdjList.h" />
+    <ClInclude Include="NodeDatabase.h" />
     <ClInclude Include="AND.h" />
     <ClInclude Include="Circuit.h" />
     <ClInclude Include="Defines.h" />

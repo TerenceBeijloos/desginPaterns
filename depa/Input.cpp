@@ -33,7 +33,7 @@ bool Input::addInput(const std::string& index)
 	return true;
 }
 
-const std::map<std::string, bool>& Input::iterateObj() const
+const std::map<std::string, bool>& const Input::iterateObj() const
 {
 	return _Inputs;
 }

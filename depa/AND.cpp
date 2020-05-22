@@ -10,7 +10,7 @@ AND::AND()
     std::cout << "in default constructor " << STR_AND << std::endl;
 }
 
-AND::AND( std::string id ) : Node( id )
+AND::AND( std::string id ) : Node(id)
 {
     std::cout << "in assignment constructor " << STR_AND << std::endl;
 }
@@ -20,22 +20,26 @@ AND::~AND()
     std::cout << "in destructor " << STR_AND << std::endl;
 }
 
-bool AND::compareValues(std::vector<bool>inputValues)
+bool AND::compareValues()
 {
-    std::cout << "---> in compare " << STR_AND << std::endl;
+    IoState result = HIGH;
 
-    if (inputValues.size() < 1)
-    {
-        return false;
-	}
+    for (const auto& p : this->getInputs()) {
+        if (p->getOutput() == UNDF)
+        {
+            this->setOutput(UNDF);
+            return false;
+        }
 
-    for(int i = 0; i < inputValues.size(); i++)
-    {
-      if(inputValues.at(i) != true)
-      {
-        return false;
-	  }
-	}
+        if (p->getOutput() == LOW)
+        {
+            result = LOW;
+        }
+
+    }
+
+    this->setOutput(result);
+    this->onEventOutput();
 
     return true;
 }

@@ -1,43 +1,22 @@
 #include "Output.h"
+#include <cstddef>
 
 Output::Output()
 {
+	this->_Output = UNDF;
 }
 
 Output::~Output()
 {
 }
 
-bool Output::getOutput(const std::string& index) const
+IoState Output::getOutput() const
 {
-	if (!this->indexExists(index)) { return NULL; }
-
-	return _Outputs.find(index)->second;
+	return this->_Output;
 }
 
-bool Output::setOutput(const std::string& index, bool value)
+void Output::setOutput(const IoState& output)
 {
-	if (!this->indexExists(index)) { return false; }
-
-	_Outputs[index] = value;
-
-	return true;
+	this->_Output = output;
 }
 
-bool Output::addOutput(const std::string& index)
-{
-	if (this->indexExists(index)) { return false; }
-
-	_Outputs[index] = NULL;
-
-	return true;
-}
-
-const std::map<std::string, bool>& Output::iterateObj() const
-{
-	return _Outputs;
-}
-
-bool Output::indexExists(const std::string& index) const {
-	return !(_Outputs.find(index) == _Outputs.end());
-}

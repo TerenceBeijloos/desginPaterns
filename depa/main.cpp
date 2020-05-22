@@ -3,7 +3,10 @@
 #include <iostream>
 #include "Defines.h"
 #include <vector>
+#include <string>
 #include "Input.h"
+#include "AdjList.h"
+#include "InputFileHandler.h"
 
 int main()
 {
@@ -21,6 +24,20 @@ int main()
     //Circuit circuit;
 
     //circuit.addComponent(STR_AND, "NODE1");
+
+	AdjList testList;
+
+    for(int i = 0; i < 5; i++){
+        testList.addVertex();
+        testList.addEdge(i, 2+i);
+        testList.addEdge(i, 9-i);
+	}
+
+
+    InputFileHandler fileHandler;
+    std::string fileName = "circuit1.txt";
+
+    fileHandler.getNodeDescriptions(fileName);
 
     std::cin.get();
 

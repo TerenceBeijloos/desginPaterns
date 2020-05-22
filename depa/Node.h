@@ -1,18 +1,28 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <list>
+#include "Output.h"
 
-class Node
+class Circuit;
+
+class Node : public Output
 {
 private:
-    std::string nodeID;
-
+    std::string _nodeID;
+    Circuit* _circuit;
 protected:
                     Node();
                     Node(std::string id);
 public:
     virtual        ~Node();
-    virtual bool compareValues(std::vector<bool>inputValues);
+    virtual bool compareValues();
     virtual void setNodeID(std::string nodeID);
+    virtual void setCircuit(Circuit*);
+
+    virtual void onEventInput();
+    virtual void onEventOutput();
+
+    const std::list<Node*>& const getInputs();
     virtual Node  *clone() const   = 0;
 };

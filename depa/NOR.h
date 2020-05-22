@@ -20,7 +20,7 @@ private:
 public:
     virtual  ~NOR();
 
-    bool compareValues(std::vector<bool>inputValues) override;
+    bool compareValues() override;
     Node *clone() const  override;
     void setNodeID(std::string nodeID) override; 
  };

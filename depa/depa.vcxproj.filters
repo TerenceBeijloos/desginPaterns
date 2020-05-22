@@ -87,11 +87,11 @@
     <ClCompile Include="Input.cpp">
       <Filter>Source Files\IO</Filter>
     </ClCompile>
-    <ClCompile Include="AdjList.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Output.cpp">
       <Filter>Source Files\IO</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeDatabase.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -146,11 +146,11 @@
     <ClInclude Include="Input.h">
       <Filter>Header Files\IO</Filter>
     </ClInclude>
-    <ClInclude Include="AdjList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Output.h">
       <Filter>Header Files\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeDatabase.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

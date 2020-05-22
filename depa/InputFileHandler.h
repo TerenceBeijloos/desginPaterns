@@ -6,13 +6,18 @@
 class InputFileHandler
 {
 private:
-	std::ifstream InputFile;
 	std::vector<std::vector<std::string> > nodes;
+	std::vector<std::vector<std::string> > edges;
+
+	int edgesAtLine = 0;
 
 public:
 	InputFileHandler();
 	virtual ~InputFileHandler();
 
-	void getNodeDescriptions(std::string string[], std::string nodeType[]);
-	void getNodeEdges(std::string& stringIn, std::string& stringOut);
+	void getNodeDescriptions(std::string InputFileName);
+	void edgeOrNode(std::string nodeName, std::string nodeDesc);
+
+	std::vector<std::vector<std::string> > getNodeDescriptionsVector();
+	std::vector<std::vector<std::string> > getNodeEdgesVector();
 };

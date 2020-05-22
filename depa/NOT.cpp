@@ -20,18 +20,28 @@ NOT::~NOT()
     std::cout << "in destructor NOT" << std::endl;
 }
 
-bool NOT::compareValues(std::vector<bool>inputValues)
+bool NOT::compareValues()
 {
-    std::cout << "---> in actie NOT" << std::endl;
+    IoState result = HIGH;
 
-    if (inputValues.size() < 1)
-    {
-        return false;
-	}
+    for (const auto& p : this->getInputs()) {
+        if (p->getOutput() == UNDF)
+        {
+            this->setOutput(UNDF);
+            return false;
+        }
 
-    inputValues.flip();
+        if (p->getOutput() == HIGH)
+        {
+            result = LOW;
+        }
 
-    return inputValues.at(0);
+    }
+
+    this->setOutput(result);
+    this->onEventOutput();
+
+    return true;
 }
 
 Node* NOT::clone() const

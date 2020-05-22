@@ -20,24 +20,28 @@ OR::~OR()
     std::cout << "in destructor OR" << std::endl;
 }
 
-bool OR::compareValues(std::vector<bool>inputValues)
+bool OR::compareValues()
 {
+    IoState result = LOW;
 
-    if (inputValues.size() < 1)
-    {
-        return false;
-	}
-
-    for(int i = 0; i < inputValues.size(); i++)
-    {
-        if(inputValues.at(i) == true)
+    for (const auto& p : this->getInputs()) {
+        if (p->getOutput() == UNDF)
         {
-            return true;
-	    }
-	}
+            this->setOutput(UNDF);
+            return false;
+        }
 
-    std::cout << "---> in actie OR" << std::endl;
-    return false;
+        if (p->getOutput() == HIGH)
+        {
+            result = HIGH;
+        }
+
+    }
+
+    this->setOutput(result);
+    this->onEventOutput();
+
+    return true;
 }
 
 Node* OR::clone() const
