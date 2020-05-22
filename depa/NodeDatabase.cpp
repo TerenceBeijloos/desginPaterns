@@ -78,5 +78,5 @@ std::list<Node*>& NodeDatabase::getOutputs(NodeType nodeType, Node *sourceNode)
 
 void NodeDatabase::displayDb()
 {
-
+   
 }
