@@ -11,17 +11,22 @@ Circuit::~Circuit()
 {
 }
 
-void Circuit::addComponent(std::string strNode, std::string newNodeID)
+void Circuit::addComponent(std::string strNodeType, std::string newNodeID)
 {
-    std::vector<bool> inputValues;
 
-	Node  *pNode  = Factory::FactoryMethod<std::string,Node>::create( strNode );
+	Node  *pNode  = Factory::FactoryMethod<std::string,Node>::create(strNodeType);
 
     if ( pNode != nullptr )
     {
         pNode->setNodeID(newNodeID);
-		pNode->compareValues(inputValues);
-
-        delete pNode;
     }
+    else
+    {
+        assert(false);
+    }
+}
+
+const std::list<Node*>& Circuit::getInputs(const NodeType& nodeType, Node* node)
+{
+    return nodeCircuit.getInputs(nodeType, node);
 }

@@ -11,6 +11,7 @@
 #define STR_INPUT_LOW	"INPUT_LOW"
 
 #define STR_PROBE		"PROBE"
+#define STR_INPUT_NODE  "INPUT_NODE"
 
 #define STR_NODE		"NODE"
 

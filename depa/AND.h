@@ -13,7 +13,6 @@ private:
 
     static AND Instance;
     std::vector<bool>inputValues;
-	bool result;
     std::string nodeID;
 
 public:

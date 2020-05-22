@@ -1,12 +1,12 @@
 #pragma once
 
 #include "Node.h"
-
 #include "FactoryMethod.h"
 
 #include <iostream>
 #include <string>
 #include "Circuit.h"
+#include <assert.h>
 
 Node::Node()
 {
@@ -52,12 +52,13 @@ void Node::onEventInput()
 
 void Node::onEventOutput()
 {
+
     for (const auto& p : this->getInputs()) {
         p->onEventInput();
     }
 }
 
-const std::list<Node*>& const Node::getInputs()
+const std::list<Node*>& Node::getInputs()
 {
-    return this->_circuit.getInputs(ENUM_LOGIC_NODE, this);
+    return this->_circuit->getInputs(ENUM_LOGIC_NODE, this);
 }

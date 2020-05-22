@@ -23,6 +23,6 @@ public:
     virtual void onEventInput();
     virtual void onEventOutput();
 
-    const std::list<Node*>& const getInputs();
+    const std::list<Node*>& getInputs();
     virtual Node  *clone() const   = 0;
 };

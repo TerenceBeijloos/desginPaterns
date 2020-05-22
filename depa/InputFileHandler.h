@@ -9,7 +9,7 @@ private:
 	std::vector<std::vector<std::string> > nodes;
 	std::vector<std::vector<std::string> > edges;
 
-	int edgesAtLine = 0;
+	int rowSizeN = 0, rowSizeE = 0;
 
 public:
 	InputFileHandler();

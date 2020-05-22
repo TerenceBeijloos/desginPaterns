@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iterator>
 #include <list>
+#include <assert.h>
 
 NodeDatabase::NodeDatabase()
 {
@@ -23,13 +24,13 @@ void NodeDatabase::addNode(NodeType nodeType, Node *sourceNode)
 
     tempMap.insert(std::pair<const IoType, std::list<Node*>>(ENUM_INPUT, emptyList));
 
-    nodeDb.at(nodeType).insert(*sourceNode, tempMap);
+    nodeDb.at(nodeType).insert(std::pair<Node*, std::map<IoType, std::list<Node*>>>(sourceNode, tempMap));
 
     tempMap.clear();
 
     tempMap.insert(std::pair<const IoType, std::list<Node*>>(ENUM_OUTPUT, emptyList));
 
-    nodeDb.at(nodeType).insert(*sourceNode, tempMap);
+    nodeDb.at(nodeType).insert(std::pair<Node*, std::map<IoType, std::list<Node*>>>(sourceNode, tempMap));
 }
 
 void NodeDatabase::addInput(NodeType nodeType, Node *sourceNode, Node *inputNode)
@@ -59,46 +60,20 @@ void NodeDatabase::addOutput(NodeType nodeType, Node *sourceNode, Node *outputNo
 }
 
 
-const std::list<Node*>& const NodeDatabase::getInputs(NodeType nodeType, Node *sourceNode)
+const std::list<Node*>& NodeDatabase::getInputs(NodeType nodeType, Node *sourceNode)
 {
-    const std::list<Node*> emptyList;
+    assert(nodeDb.at(nodeType).empty() != true);
+    assert(nodeDb.at(nodeType).at(sourceNode).empty() != true);
 
-    if (nodeDb.at(nodeType).empty())
-    {
-        return emptyList;
-	}
-    else
-    {
-        if (nodeDb.at(nodeType).at(sourceNode).empty())
-        {
-            return emptyList;
-		}
-        else
-        {
-            return nodeDb.at(nodeType).at(sourceNode).at(ENUM_INPUT);
-		}
-	}
+    return nodeDb.at(nodeType).at(sourceNode).at(ENUM_INPUT);
 }
 
 std::list<Node*>& NodeDatabase::getOutputs(NodeType nodeType, Node *sourceNode)
 {
-    std::list<Node*> emptyList;
+    assert(nodeDb.at(nodeType).empty() != true);
+    assert(nodeDb.at(nodeType).at(sourceNode).empty() != true);
 
-    if (nodeDb.at(nodeType).empty())
-    {
-        return emptyList;
-	}
-    else
-    {
-        if (nodeDb.at(nodeType).at(sourceNode).empty())
-        {
-            return emptyList;
-		}
-        else
-        {
-            return nodeDb.at(nodeType).at(sourceNode).at(ENUM_OUTPUT);
-		}
-	}
+    return nodeDb.at(nodeType).at(sourceNode).at(ENUM_OUTPUT);
 }
 
 void NodeDatabase::displayDb()

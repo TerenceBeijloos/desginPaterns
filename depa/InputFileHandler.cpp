@@ -27,6 +27,9 @@ void InputFileHandler::getNodeDescriptions(std::string InputFileName)
 
 		for (int i = 0; i < line.size() - 1; i++)
 		{
+			if (line.size() == 0) {
+				break;
+			}
 			if (line.at(i) == '#')
 			{
 				break;
@@ -34,6 +37,7 @@ void InputFileHandler::getNodeDescriptions(std::string InputFileName)
 			if (line.at(i) == ':')
 			{
 				flag = true;
+				i++;
 			}
 			if ((flag == false) && (!std::isspace(line.at(i))))
 			{
@@ -49,15 +53,16 @@ void InputFileHandler::getNodeDescriptions(std::string InputFileName)
 
 		indexn = 0;
 		indexd = 0;
-		std::fill(name,name+10,NULL);
-		std::fill(desc,desc+10,NULL);
+
 
 		nodeName = name;
 		nodeDesc = desc;
+		std::fill(name, name + 10, NULL);
+		std::fill(desc, desc + 10, NULL);
 
 		edgeOrNode(nodeName, nodeDesc);
 
-		std::cout << "FILE input node:  " << nodeName << "  " << nodeDesc << std::endl; //TEST
+		
 	}
 
 	InputFile.close();
@@ -75,26 +80,34 @@ std::vector<std::vector<std::string> > InputFileHandler::getNodeEdgesVector()
 
 void InputFileHandler::edgeOrNode(std::string nodeName, std::string nodeDesc)
 {
-	bool edge = true;
+	bool edge = false;
 
-	for (int i = 0; i < nodes.size(); i++)
+	for (int i = 0; i < nodes.size(); ++i)
 	{
-		if (nodeName == nodes[0].at(i))
+		if (nodeName == nodes.at(i).at(0))
 		{
 			edge = true;
 			break;
 		}
 	}
 
-	if (edge)
+	if ((edge == true) && (nodeName.length() > 0))
 	{
-		this->edges[0].push_back(nodeName);
-		this->edges[1].push_back(nodeDesc);
+		std::vector<std::string> nodeRow;
+		nodeRow.push_back(nodeName);
+		this->edges.push_back(nodeRow);
+		this->edges.at(rowSizeE).push_back(nodeDesc);
+		rowSizeE++;
 		edge = false;
+		std::cout << "EDGE input node:  " << nodeName << "  " << nodeDesc << std::endl; //TEST
 	}
-	else
+	else if (nodeName.length() > 0)
 	{
-		this->nodes[0].push_back(nodeName);
-		this->nodes[1].push_back(nodeDesc);
+		std::vector<std::string> nodeRow;
+		nodeRow.push_back(nodeName);
+		this->nodes.push_back(nodeRow);
+		this->nodes.at(rowSizeN).push_back(nodeDesc);
+		rowSizeN++;
+		std::cout << "NODE input node:  " << nodeName << "  " << nodeDesc << std::endl; //TEST
 	}
 }

@@ -13,7 +13,6 @@ private:
 
     static InputNode Instance;
     std::vector<bool>inputValues;
-    bool result;
     std::string nodeID;
 
 public:
@@ -22,4 +21,5 @@ public:
     bool compareValues() override;
     Node* clone() const  override;
     void setNodeID(std::string nodeID) override;
+    void onEventOutput() override;
 };
