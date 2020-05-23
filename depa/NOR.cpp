@@ -48,8 +48,3 @@ Node* NOR::clone() const
 {
     return new NOR;
 }
-
-void NOR::setNodeID(std::string newNodeID)
-{
-    nodeID = newNodeID;
-}

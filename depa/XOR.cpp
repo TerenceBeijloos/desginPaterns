@@ -46,7 +46,3 @@ Node* XOR::clone() const
     return new XOR;
 }
 
-void XOR::setNodeID(std::string newNodeID)
-{
-    nodeID = newNodeID;
-}

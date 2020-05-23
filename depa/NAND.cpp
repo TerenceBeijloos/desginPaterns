@@ -48,8 +48,3 @@ Node* NAND::clone() const
 {
     return new NAND;
 }
-
-void NAND::setNodeID(std::string newNodeID)
-{
-    nodeID = newNodeID;
-}

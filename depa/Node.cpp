@@ -52,7 +52,6 @@ void Node::onEventInput()
 
 void Node::onEventOutput()
 {
-
     for (auto const & p : this->getInputs()) {
         p->onEventInput();
     }

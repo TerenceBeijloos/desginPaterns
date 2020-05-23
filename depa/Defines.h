@@ -15,7 +15,7 @@
 
 #define STR_NODE		"NODE"
 
-typedef enum {ENUM_INPUT_NODE, ENUM_LOGIC_NODE, ENUM_PROBE_NODE} NodeType;
+typedef enum {ENUM_INPUT_NODE, ENUM_LOGIC_NODE, ENUM_PROBE_NODE, ENUM_ERROR_TYPE} NodeType;
 typedef enum {ENUM_INPUT, ENUM_OUTPUT} IoType;
 
 typedef enum {LOW, HIGH, UNDF} IoState; //Order is important!

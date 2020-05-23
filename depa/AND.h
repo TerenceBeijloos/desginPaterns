@@ -12,7 +12,6 @@ private:
     AND( std::string id);
 
     static AND Instance;
-    std::vector<bool>inputValues;
 
 public:
     virtual  ~AND();

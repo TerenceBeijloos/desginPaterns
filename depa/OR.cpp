@@ -48,8 +48,3 @@ Node* OR::clone() const
 {
     return new OR;
 }
-
-void OR::setNodeID(std::string newNodeID)
-{
-    nodeID = newNodeID;
-}

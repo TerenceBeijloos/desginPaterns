@@ -84,9 +84,6 @@
     <ClCompile Include="OutputFileHandler.cpp">
       <Filter>Source Files\FileHandlers</Filter>
     </ClCompile>
-    <ClCompile Include="Input.cpp">
-      <Filter>Source Files\IO</Filter>
-    </ClCompile>
     <ClCompile Include="Output.cpp">
       <Filter>Source Files\IO</Filter>
     </ClCompile>
@@ -142,9 +139,6 @@
     </ClInclude>
     <ClInclude Include="factoryMethod.hpp">
       <Filter>Header Files\factoryMethodes</Filter>
-    </ClInclude>
-    <ClInclude Include="Input.h">
-      <Filter>Header Files\IO</Filter>
     </ClInclude>
     <ClInclude Include="Output.h">
       <Filter>Header Files\IO</Filter>

@@ -76,13 +76,64 @@ std::list<Node*>& NodeDatabase::getOutputs(NodeType nodeType, Node *baseNode)
     return nodeDb.at(nodeType).at(baseNode).at(ENUM_OUTPUT);
 }
 
-void NodeDatabase::getNode(NodeType nodeType, std::string nodeID)
+std::map<Node*, std::map<IoType, std::list<Node*>>> NodeDatabase::getInputNodes()
 {
+    return nodeDb.at(ENUM_INPUT_NODE);
+}
+
+std::map<Node*, std::map<IoType, std::list<Node*>>> NodeDatabase::getProbeNodes()
+{
+    return nodeDb.at(ENUM_PROBE_NODE);
+}
+
+Node* NodeDatabase::getNode(std::string nodeID)
+{
+
+    std::map<NodeType, std::map<Node*, std::map<IoType, std::list<Node*>>>>::iterator itTop = nodeDb.begin();
+
     
-    //nodeDb.at(nodeType).find()
-    //std::map<Node*, std::map<IoType, std::list<Node*>>>::iterator it;
+    while(itTop != nodeDb.end())
+    {
+     
+        std::map<Node*, std::map<IoType, std::list<Node*>>>::iterator it = itTop->second.begin();
+        
+        while(it != itTop->second.end())
+        {
+            if (it->first->getNodeID() == nodeID)
+            {
+                return it->first;
+			}
+            it++;
+		}
 
-    //for (it = nodeDb.at(nodeType).begin(); it < nodeDb.at(nodeType).end(); it++){
+        itTop++;
+	}
 
-	//}
+    return nullptr;
+}
+
+NodeType NodeDatabase::getNodeType(std::string nodeID)
+{
+    Node* tempNodeAddr = getNode(nodeID);
+
+    std::map<NodeType, std::map<Node*, std::map<IoType, std::list<Node*>>>>::iterator itTop = nodeDb.begin();
+
+    while(itTop != nodeDb.end())
+    {
+     
+        std::map<Node*, std::map<IoType, std::list<Node*>>>::iterator it = itTop->second.begin();
+        
+        while(it != itTop->second.end())
+        {
+            if (it->first == tempNodeAddr)
+            {
+                return itTop->first;
+			}
+            it++;
+		}
+
+        itTop++;
+	}
+
+    return ENUM_ERROR_TYPE;
 }

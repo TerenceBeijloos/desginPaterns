@@ -48,8 +48,3 @@ Node* NOT::clone() const
 {
     return new NOT;
 }
-
-void NOT::setNodeID(std::string newNodeID)
-{
-    nodeID = newNodeID;
-}

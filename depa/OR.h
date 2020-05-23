@@ -13,14 +13,10 @@ private:
     OR( std::string id);
 
     static OR Instance;
-    std::vector<bool>inputValues;
-	bool result;
-    std::string nodeID;
 
 public:
     virtual  ~OR();
 
     bool compareValues() override;
     Node *clone() const  override;   
-    void setNodeID(std::string nodeID) override; 
  };

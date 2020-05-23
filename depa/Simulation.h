@@ -11,7 +11,7 @@ class Simulation
 public:
 	Simulation();
 	virtual ~Simulation();
-	void start();
+	void start(std::string circuitSelected);
 	std::string createCircuit(std::string circuitName, std::string fileName);
 	void setInputVariables(std::string circuitID);
 
