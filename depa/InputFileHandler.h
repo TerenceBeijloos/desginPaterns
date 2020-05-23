@@ -4,12 +4,15 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <map>
 
 class InputFileHandler
 {
 private:
 	std::vector<std::vector<std::string> > nodes;
 	std::vector<std::vector<std::string> > edges;
+	
+	std::map<std::string, std::string> _nodes;
 
 	int rowSizeN = 0, rowSizeE = 0;
 

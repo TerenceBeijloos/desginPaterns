@@ -103,11 +103,11 @@ void InputFileHandler::edgeOrNode(std::string nodeName, std::string nodeDesc)
 	}
 	else if (nodeName.length() > 0)
 	{
-		std::vector<std::string> nodeRow;
-		nodeRow.push_back(nodeName);
-		this->nodes.push_back(nodeRow);
-		this->nodes.at(rowSizeN).push_back(nodeDesc);
-		rowSizeN++;
+		this->_nodes.insert(std::pair<const std::string, const std::string>(nodeName, nodeDesc));
+		//std::vector<std::string> nodeRow;
+		//nodeRow.push_back(nodeName);
+		//this->nodes.push_back(nodeRow);
+		//this->nodes.at(rowSizeN).push_back(nodeDesc);
 		std::cout << "NODE input node:  " << nodeName << "  " << nodeDesc << std::endl; //TEST
 	}
 }

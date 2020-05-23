@@ -1,5 +1,6 @@
 #pragma once
 #include "Defines.h"
+#include <string>
 
 class Output
 {
@@ -8,6 +9,8 @@ public:
 	virtual ~Output();
 
 	IoState getOutput() const;
+	IoState toIoState(std::string);
+
 	void setOutput(const IoState&);
 
 private:
