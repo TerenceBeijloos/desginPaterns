@@ -53,7 +53,7 @@ void Node::onEventInput()
 void Node::onEventOutput()
 {
 
-    for (const auto& p : this->getInputs()) {
+    for (auto const & p : this->getInputs()) {
         p->onEventInput();
     }
 }
@@ -61,4 +61,8 @@ void Node::onEventOutput()
 const std::list<Node*>& Node::getInputs()
 {
     return this->_circuit->getInputs(ENUM_LOGIC_NODE, this);
+}
+
+std::string Node::getNodeID() {
+    return this->_nodeID;
 }

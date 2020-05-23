@@ -17,7 +17,10 @@ protected:
 public:
     virtual        ~Node();
     virtual bool compareValues();
+
     virtual void setNodeID(std::string nodeID);
+    virtual std::string getNodeID();
+
     virtual void setCircuit(Circuit*);
 
     virtual void onEventInput();

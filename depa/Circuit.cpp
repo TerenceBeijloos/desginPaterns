@@ -5,13 +5,16 @@
 
 Circuit::Circuit(std::vector<std::vector<std::string> > nodes, std::vector<std::vector<std::string> > edges)
 {
+    //nodeCircuit.addOutput();
+    //nodeCircuit.addNode();
+    //nodeCircuit.addInput();
 }
 
 Circuit::~Circuit()
 {
 }
 
-void Circuit::addComponent(const NodeType& nodeLayerType, const std::string& nodeCreateType, const std::string& nodeID)
+Node *Circuit::addComponent(const NodeType& nodeLayerType, const std::string& nodeCreateType, const std::string& nodeID)
 {
 
 	Node  *pNode  = Factory::FactoryMethod<std::string,Node>::create(nodeCreateType);
@@ -25,6 +28,10 @@ void Circuit::addComponent(const NodeType& nodeLayerType, const std::string& nod
     {
         assert(false);
     }
+
+    std::cout << "pNode: " << pNode->getNodeID();
+
+    return pNode;
 }
 
 const std::list<Node*>& Circuit::getInputs(const NodeType& nodeType, Node* node)

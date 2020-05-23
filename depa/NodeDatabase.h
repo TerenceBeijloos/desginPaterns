@@ -14,13 +14,12 @@ public:
 	NodeDatabase();
 	virtual ~NodeDatabase();
 
-	void addInput(NodeType nodeType, Node *sourceNode, Node *inputNode);
-	void addOutput(NodeType nodeType, Node *sourceNode, Node *outputNode);
-	void addNode(NodeType nodeType, Node* sourceNode);
-	const std::list<Node*>& getInputs(NodeType nodeType, Node* sourceNode);
-	std::list<Node*>& getOutputs(NodeType nodeType, Node* sourceNode);
-	
-	void displayDb();
+	void addInput(NodeType nodeType, Node *baseNode, Node *inputNode);
+	void addOutput(NodeType nodeType, Node *baseNode, Node *outputNode);
+	void addNode(NodeType nodeType, Node* baseNode);
+	const std::list<Node*>& getInputs(NodeType nodeType, Node* baseNode);
+	std::list<Node*>& getOutputs(NodeType nodeType, Node* baseNode);
+	void getNode(NodeType nodeType, std::string nodeID);
 
 private:
 	std::map<NodeType, std::map<Node*, std::map<IoType, std::list<Node*>>>> nodeDb;

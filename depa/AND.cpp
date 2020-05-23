@@ -48,8 +48,3 @@ Node* AND::clone() const
 {
     return new AND;
 }
-
-void AND::setNodeID(std::string newNodeID)
-{
-    nodeID = newNodeID;
-}
