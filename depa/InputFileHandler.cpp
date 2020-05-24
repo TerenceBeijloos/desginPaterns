@@ -139,7 +139,6 @@ void InputFileHandler::filterNodes(const char & separator, const std::string& ta
 	std::string nodeId = "";
 	bool flag = false;
 
-	std::cout << "filerNodes: " << std::endl;
 
 	for(int i = 0; i < target.length(); i++)
 		{
@@ -154,12 +153,13 @@ void InputFileHandler::filterNodes(const char & separator, const std::string& ta
 			else if (flag == true)
 			{
 				flag = false;
-				std::cout << nodeId << std::endl;
+				//std::cout << nodeId << std::endl;
+
 				buffer.push_back(nodeId);
 				nodeId.clear();
 			}
 		}
-	std::cout << nodeId << std::endl;
+	//std::cout << nodeId << std::endl;
 	buffer.push_back(nodeId);
 	nodeId.clear();
 }

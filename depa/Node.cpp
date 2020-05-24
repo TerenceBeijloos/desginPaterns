@@ -12,7 +12,6 @@ Node::Node()
 {
     this->_nodeID = "";
     this->_circuit = nullptr;
-    std::cout << "in default constructor Node" << std::endl;
 }
 
 Node::Node( std::string id)
@@ -21,17 +20,14 @@ Node::Node( std::string id)
 
     this->setNodeID(id);
     this->_circuit = nullptr;
-    std::cout << "in assignment constructor Node" << std::endl;
 }
 
 Node::~Node()
 {
-    std::cout << "in destructor Node" << std::endl;
 }
 
 bool Node::compareValues()
 {
-    std::cout << "---> in comparevalues node" << std::endl;
     return true;
 }
 

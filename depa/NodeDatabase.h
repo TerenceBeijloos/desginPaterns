@@ -22,6 +22,7 @@ public:
 	std::list<Node*>& getOutputs(NodeType nodeType, Node* baseNode);
 
 	std::map<Node*, std::map<IoType, std::list<Node*>>> getInputNodes();
+	std::map<Node*, std::map<IoType, std::list<Node*>>> getLogicNodes();
 	std::map<Node*, std::map<IoType, std::list<Node*>>> getProbeNodes();
 
 	Node* getNode(std::string nodeID);

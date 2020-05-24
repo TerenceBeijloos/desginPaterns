@@ -7,17 +7,14 @@ NOT NOT::Instance( STR_NOT );
 
 NOT::NOT()
 {
-    std::cout << "in default constructor NOT" << std::endl;
 }
 
 NOT::NOT( std::string id ) : Node( id )
 {
-    std::cout << "in assignment constructor NOT" << std::endl;
 }
 
 NOT::~NOT()
 {
-    std::cout << "in destructor NOT" << std::endl;
 }
 
 bool NOT::compareValues()
@@ -39,7 +36,7 @@ bool NOT::compareValues()
     }
 
     this->setOutput(result);
-    std::cout << "nodeId: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
+    //std::cout << "nodeId: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
     this->onEventOutput();
 
     return true;

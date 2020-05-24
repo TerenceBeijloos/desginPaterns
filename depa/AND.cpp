@@ -7,17 +7,14 @@ AND AND::Instance( STR_AND );
 
 AND::AND()
 {
-    std::cout << "in default constructor " << STR_AND << std::endl;
 }
 
 AND::AND( std::string id ) : Node(id)
 {
-    std::cout << "in assignment constructor " << STR_AND << std::endl;
 }
 
 AND::~AND()
 {
-    std::cout << "in destructor " << STR_AND << std::endl;
 }
 
 bool AND::compareValues()
@@ -40,7 +37,7 @@ bool AND::compareValues()
 
     this->setOutput(result);
 
-    std::cout << "nodeId: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
+    //std::cout << "nodeId: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
 
     this->onEventOutput();
 

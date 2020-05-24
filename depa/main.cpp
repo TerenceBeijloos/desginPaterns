@@ -3,8 +3,9 @@
 
 int main()
 {
+    std::string name = "circuit1.txt";
     Simulation testSim;
-    testSim.createCircuit("firstCircuit", "circuit1.txt");
+    testSim.createCircuit("firstCircuit", name);
     testSim.start("firstCircuit");
 
     std::cin.get();

@@ -151,5 +151,8 @@
     <Text Include="circuit1.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="..\x64\Debug\CIRCUIT3.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

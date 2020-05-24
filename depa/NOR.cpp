@@ -7,17 +7,14 @@ NOR NOR::Instance( STR_NOR );
 
 NOR::NOR()
 {
-    std::cout << "in default constructor NOR" << std::endl;
 }
 
 NOR::NOR( std::string id ) : Node( id )
 {
-    std::cout << "in assignment constructor NOR" << std::endl;
 }
 
 NOR::~NOR()
 {
-    std::cout << "in destructor NOR" << std::endl;
 }
 
 bool NOR::compareValues()

@@ -7,17 +7,14 @@ OR OR::Instance( STR_OR );
 
 OR::OR()
 {
-    std::cout << "in default constructor OR" << std::endl;
 }
 
 OR::OR( std::string id ) : Node( id )
 {
-    std::cout << "in assignment constructor OR" << std::endl;
 }
 
 OR::~OR()
 {
-    std::cout << "in destructor OR" << std::endl;
 }
 
 bool OR::compareValues()
@@ -39,7 +36,7 @@ bool OR::compareValues()
     }
 
     this->setOutput(result);
-    std::cout << "nodeId: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
+    //std::cout << "nodeId: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
     this->onEventOutput();
 
     return true;

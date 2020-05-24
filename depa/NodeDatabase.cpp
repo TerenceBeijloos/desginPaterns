@@ -78,6 +78,11 @@ std::map<Node*, std::map<IoType, std::list<Node*>>> NodeDatabase::getInputNodes(
     return nodeDb.at(ENUM_INPUT_NODE);
 }
 
+std::map<Node*, std::map<IoType, std::list<Node*>>> NodeDatabase::getLogicNodes()
+{
+    return nodeDb.at(ENUM_LOGIC_NODE);
+}
+
 std::map<Node*, std::map<IoType, std::list<Node*>>> NodeDatabase::getProbeNodes()
 {
     return nodeDb.at(ENUM_PROBE_NODE);

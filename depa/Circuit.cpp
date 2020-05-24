@@ -3,10 +3,57 @@
 #include "Circuit.h"
 #include <string>
 
+bool Circuit::checkRecursiveLoop(Node* node, const std::string& search) {
+
+    for (auto const& p : node->getOutputs()) {
+        if (p->getNodeID() == search)
+        {
+            return false;
+        }
+        if (!checkRecursiveLoop(p, search)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Circuit::checkLoops()
+{
+    for(auto const &p : this->nodeCircuit.getLogicNodes()){
+        if (!checkRecursiveLoop(p.first,p.first->getNodeID()))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Circuit::checkEnds()
+{
+
+    for (auto const& p : this->nodeCircuit.getInputNodes()) {
+        if (p.first->getOutputs().empty())
+        {
+            return false;
+        }
+    }
+
+    for (auto const& p : this->nodeCircuit.getLogicNodes()) {
+        if (p.first->getOutputs().empty())
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 Circuit::Circuit(const std::map<std::string, std::string>& nodeDescriptions, const std::map<std::string, std::vector<std::string>>& nodeEdges)
 {
     this->addAllNodesToCircuit(nodeDescriptions);
     this->addAllEdgesToCircuit(nodeEdges);
+    assert(this->checkEnds());
+    assert(this->checkLoops());
 }
 
 Circuit::~Circuit()

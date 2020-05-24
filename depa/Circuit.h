@@ -7,6 +7,11 @@
 
 class Circuit
 {
+private:
+	bool checkRecursiveLoop(Node* node, const std::string& seach);
+	bool checkLoops();
+	bool checkEnds();
+
 public:
 	Circuit(const std::map<std::string, std::string>& nodeDescriptions, const std::map<std::string, std::vector<std::string>>& nodeEdges);
 	virtual ~Circuit();

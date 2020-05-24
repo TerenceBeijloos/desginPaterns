@@ -5,17 +5,14 @@ XOR XOR::Instance( STR_XOR );
 
 XOR::XOR()
 {
-    std::cout << "in default constructor XOR" << std::endl;
 }
 
 XOR::XOR( std::string id ) : Node( id )
 {
-    std::cout << "in assignment constructor XOR" << std::endl;
 }
 
 XOR::~XOR()
 {
-    std::cout << "in destructor XOR" << std::endl;
 }
 
 bool XOR::compareValues() {
