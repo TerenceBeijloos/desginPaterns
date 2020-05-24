@@ -20,6 +20,8 @@
 #define CHAR_SEPARATOR				','
 #define CHAR_LINE_END				';'
 
+#define PROPAGATION_DELAY 10
+
 typedef enum {ENUM_INPUT_NODE, ENUM_LOGIC_NODE, ENUM_PROBE_NODE, ENUM_ERROR_TYPE} NodeType;
 typedef enum {ENUM_INPUT, ENUM_OUTPUT} IoType;
 

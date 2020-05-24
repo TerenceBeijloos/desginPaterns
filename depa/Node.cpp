@@ -43,15 +43,30 @@ void Node::setCircuit(Circuit* circuit)
 
 void Node::onEventInput()
 {
-    this->compareValues();
+    this->_thd = std::thread(&Node::compareValues, this);
+}
+
+void Node::joinNode() {
+    if (this->_thd.joinable())
+    {
+        this->_thd.join();
+    }
 }
 
 void Node::onEventOutput()
 {
+    std::this_thread::sleep_for(std::chrono::nanoseconds(PROPAGATION_DELAY));
+    this->joinNode();
+    this->triggerOutputs();
+}
+
+bool Node::triggerOutputs() {
     //std::cout << "Node: " << this->getNodeID() << "\tOutput: " << this->getOutput() << std::endl;
-    for (auto const & p : this->getOutputs()) {
+    for (auto const& p : this->getOutputs()) {
         p->onEventInput();
     }
+
+    return true;
 }
 
 void Node::setNodeType(const NodeType& type)

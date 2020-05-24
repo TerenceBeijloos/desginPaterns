@@ -18,7 +18,9 @@ IoState Output::getOutput() const
 
 void Output::setOutput(const IoState& output)
 {
+	this->_mtx.lock();
 	this->_Output = output;
+	this->_mtx.unlock();
 }
 
 IoState Output::toIoState(std::string strIoState) {

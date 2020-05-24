@@ -24,7 +24,7 @@ bool AND::compareValues()
     for (const auto& p : this->getInputs()) {
         if (p->getOutput() == UNDF)
         {
-            this->setOutput(UNDF);
+            //this->setOutput(UNDF);
             return false;
         }
 
@@ -37,7 +37,7 @@ bool AND::compareValues()
 
     this->setOutput(result);
 
-    //std::cout << "nodeId: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
+    //std::cout << "nodeid: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
 
     this->onEventOutput();
 

@@ -1,6 +1,7 @@
 #pragma once
 #include "Defines.h"
 #include <string>
+#include <mutex>
 
 class Output
 {
@@ -14,5 +15,6 @@ public:
 	void setOutput(const IoState&);
 
 private:
+	std::mutex _mtx;
 	IoState _Output;
 };

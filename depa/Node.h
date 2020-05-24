@@ -3,6 +3,9 @@
 #include <string>
 #include <list>
 #include "Output.h"
+#include <thread>
+
+//#include "NodeThread.h"
 
 class Circuit;
 
@@ -12,6 +15,8 @@ private:
     std::string _nodeID;
     NodeType _nodeType;
     Circuit* _circuit;
+    std::thread _thd;
+    //NodeThread _nodeThread;
 protected:
                     Node();
                     Node(std::string id);
@@ -29,6 +34,9 @@ public:
 
     virtual void setNodeType(const NodeType& type);
     virtual NodeType getNodeType() const;
+
+    virtual bool triggerOutputs();
+    virtual void joinNode();
 
     const std::list<Node*>& getInputs();
     std::list<Node*>& getOutputs();

@@ -38,5 +38,6 @@ Node* ProbeNode::clone() const
 
 void ProbeNode::onEventOutput()
 {
+    this->joinNode();
     //Trigger simulation
 }

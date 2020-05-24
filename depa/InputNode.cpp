@@ -33,6 +33,7 @@ Node* InputNode::clone() const
 void InputNode::onEventOutput()
 {
     assert(this->getOutput() != UNDF);
+    this->joinNode();
     for (const auto& p : this->getOutputs()) {
         p->onEventInput();
     }
