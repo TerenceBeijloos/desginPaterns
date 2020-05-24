@@ -9,20 +9,29 @@
 class InputFileHandler
 {
 private:
-	std::vector<std::vector<std::string> > nodes;
-	std::vector<std::vector<std::string> > edges;
-	
+	std::string _inputFileName;
+
 	std::map<std::string, std::string> _nodes;
+	std::map<std::string, std::vector<std::string>> _edges;
 
 	int rowSizeN = 0, rowSizeE = 0;
 
+	bool processFile();
+	bool nodeExists(const std::string&);
+
+	void addEdge(const std::string& nodeName, const std::string& nodeDesc);
+	void addNode(const std::string& nodeName, const std::string& nodeDesc);
+
+	void filterNodes(const char & separator, const std::string& target, std::vector<std::string>& buffer);
 public:
 	InputFileHandler();
 	virtual ~InputFileHandler();
 
-	void getNodeDescriptions(std::string InputFileName);
-	void edgeOrNode(std::string nodeName, std::string nodeDesc);
+	bool setInputFileName(std::string inputFileName);
+	const std::string& getInputFileName();
 
-	std::vector<std::vector<std::string> > getNodeDescriptionsVector();
-	std::vector<std::vector<std::string> > getNodeEdgesVector();
+
+	const std::map<std::string, std::string>& getNodeDescriptions();
+	const std::map<std::string, std::vector<std::string>>& getNodeEdges();
+
 };

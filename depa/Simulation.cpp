@@ -26,11 +26,9 @@ std::string Simulation::createCircuit(std::string circuitID, std::string fileNam
 {
 	InputFileHandler fileHandler;
 
-    fileHandler.getNodeDescriptions(fileName);
+    fileHandler.setInputFileName(fileName);
 
-    Circuit *newCircuit = new Circuit(fileHandler.getNodeDescriptionsVector(), fileHandler.getNodeEdgesVector());
-
-    std::vector<std::vector<std::string> > inputNodeValues = fileHandler.getNodeDescriptionsVector();
+    Circuit *newCircuit = new Circuit(fileHandler.getNodeDescriptions(), fileHandler.getNodeEdges());
 
     unsigned int index = 0;
     std::string current_output = "";
