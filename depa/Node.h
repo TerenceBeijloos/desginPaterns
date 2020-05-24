@@ -10,6 +10,7 @@ class Node : public Output
 {
 private:
     std::string _nodeID;
+    NodeType _nodeType;
     Circuit* _circuit;
 protected:
                     Node();
@@ -26,6 +27,11 @@ public:
     virtual void onEventInput();
     virtual void onEventOutput();
 
+    virtual void setNodeType(const NodeType& type);
+    virtual NodeType getNodeType() const;
+
     const std::list<Node*>& getInputs();
+    std::list<Node*>& getOutputs();
+
     virtual Node  *clone() const   = 0;
 };

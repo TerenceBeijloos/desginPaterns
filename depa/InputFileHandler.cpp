@@ -11,14 +11,14 @@ InputFileHandler::~InputFileHandler()
 
 bool InputFileHandler::processFile()
 {
+	std::string name = "";
+	std::string desc = "";
 	std::string line;
-	bool flag = false;
-	char name[255] = { 0 }, desc[255] = { 0 };
-	std::string nodeName;
-	std::string nodeDesc;
-	int indexn = 0, indexd = 0;
 
+	bool flag = false;
+	
 	std::ifstream InputFile;
+
 
 	InputFile.open(_inputFileName);
 
@@ -26,14 +26,20 @@ bool InputFileHandler::processFile()
 	{
 		while (std::getline(InputFile, line))
 		{
+			bool skip = true;
 			flag = false;
+			name = "";
+			desc = "";
 
 			for (int i = 0; i < line.size(); i++)
 			{
-				if (line.size() == 0) {
+				skip = false;
+				if (line.at(i) == CHAR_COMMENT)
+				{
+					skip = true;
 					break;
 				}
-				if (line.at(i) == CHAR_COMMENT)
+				if (line.at(i) == CHAR_LINE_END)
 				{
 					break;
 				}
@@ -44,38 +50,38 @@ bool InputFileHandler::processFile()
 				}
 				if ((flag == false) && (!std::isspace(line.at(i))))
 				{
-					name[indexn] = line.at(i);
-					indexn++;
+					name += line.at(i);
+				/*	name[indexn] = line.at(i);
+					indexn++;*/
 				}
 				else if ((flag == true) && (!std::isspace(line.at(i))))
 				{
-					desc[indexd] = line.at(i);
-					indexd++;
+					desc += line.at(i);
+					/*desc[indexd] = line.at(i);
+					indexd++;*/
 				}
 			}
 
-			indexn = 0;
-			indexd = 0;
+			if (skip)
+			{
+				continue;
+			}
 
-
-			nodeName = name;
-			nodeDesc = desc;
-			std::fill(name, name + 10, NULL);
-			std::fill(desc, desc + 10, NULL);
-
-			if (this->nodeExists(nodeName))
+			if (name == "") {
+				std::cout << "here";
+			}
+			if (this->nodeExists(name))
 			{
 				std::vector<std::string> filteredNodes;
-				this->filterNodes(CHAR_SEPARATOR, nodeDesc, filteredNodes);
-				this->addEdge(nodeName, filteredNodes);
+				this->filterNodes(CHAR_SEPARATOR, desc, filteredNodes);
+				this->addEdge(name, filteredNodes);
 			}
 			else
 			{
-				this->addNode(nodeName, nodeDesc);
+				this->addNode(name, desc);
 			}
-
-			InputFile.close();
 		}
+		InputFile.close();
 	}
 	else
 	{
@@ -100,9 +106,16 @@ bool InputFileHandler::nodeExists(const std::string& nodeId) {
 	return (this->_nodes.find(nodeId) != this->_nodes.end());
 }
 
-void InputFileHandler::addEdge(const std::string& nodeName, const std::string& nodeDesc)
+void InputFileHandler::addEdge(const std::string& nodeName, const std::vector<std::string>& nodeDescriptions)
 {
-	this->_edges.at(nodeName).push_back(nodeDesc);
+	if (this->_edges.find(nodeName) == this->_edges.end()) {
+		std::vector<std::string> empty;
+		this->_edges.insert(std::pair <const std::string, const std::vector<std::string>>(nodeName, empty));
+	}
+
+	for (auto const& p : nodeDescriptions) {
+		this->_edges.at(nodeName).push_back(p);
+	}
 }
 
 void InputFileHandler::addNode(const std::string& nodeName, const std::string& nodeDesc)
@@ -118,11 +131,12 @@ bool InputFileHandler::setInputFileName(std::string inputFileName)
 
 const std::string& InputFileHandler::getInputFileName()
 {
-	return this->getInputFileName;
+	return this->_inputFileName;
 }
 
-void InputFileHandler::filterNodes(const char & separator, const std::string& target, std::vector<std::string>& buffer) {
-	std::string nodeId;
+void InputFileHandler::filterNodes(const char & separator, const std::string& target, std::vector<std::string>& buffer) 
+{
+	std::string nodeId = "";
 	bool flag = false;
 
 	std::cout << "filerNodes: " << std::endl;
@@ -133,16 +147,19 @@ void InputFileHandler::filterNodes(const char & separator, const std::string& ta
 			{
 				flag = true;
 			}
-			if(flag == true)
+			if(flag == false)
+			{
+				nodeId += target[i];
+			}
+			else if (flag == true)
 			{
 				flag = false;
 				std::cout << nodeId << std::endl;
 				buffer.push_back(nodeId);
 				nodeId.clear();
 			}
-			else if (flag == false)
-			{
-				nodeId += target[i];
-			}
 		}
+	std::cout << nodeId << std::endl;
+	buffer.push_back(nodeId);
+	nodeId.clear();
 }

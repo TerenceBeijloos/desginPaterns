@@ -19,7 +19,7 @@ private:
 	bool processFile();
 	bool nodeExists(const std::string&);
 
-	void addEdge(const std::string& nodeName, const std::string& nodeDesc);
+	void addEdge(const std::string& nodeName, const std::vector<std::string>& nodeDescriptions);
 	void addNode(const std::string& nodeName, const std::string& nodeDesc);
 
 	void filterNodes(const char & separator, const std::string& target, std::vector<std::string>& buffer);

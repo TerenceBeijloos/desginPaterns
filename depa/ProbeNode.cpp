@@ -23,6 +23,13 @@ ProbeNode::~ProbeNode()
 
 bool ProbeNode::compareValues()
 {
+    IoState result;
+
+    for (const auto& p : this->getInputs()) {
+        result = p->getOutput();
+    }
+
+    this->setOutput(result);
     this->onEventOutput();
     return true;
 }
@@ -30,11 +37,6 @@ bool ProbeNode::compareValues()
 Node* ProbeNode::clone() const
 {
     return new ProbeNode;
-}
-
-void ProbeNode::setNodeID(std::string newNodeID)
-{
-    nodeID = newNodeID;
 }
 
 void ProbeNode::onEventOutput()

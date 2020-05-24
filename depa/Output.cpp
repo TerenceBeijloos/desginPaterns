@@ -1,5 +1,6 @@
 #include "Output.h"
 #include <cstddef>
+#include <iostream>
 
 Output::Output()
 {

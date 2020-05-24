@@ -22,11 +22,12 @@ Node *Circuit::addComponent(const NodeType& nodeLayerType, const std::string& no
     {
         pNode->setNodeID(nodeID);
         pNode->setCircuit(this);
+        pNode->setNodeType(nodeLayerType);
         this->nodeCircuit.addNode(nodeLayerType,pNode);
     }
     else
     {
-        std::cout << "addComponent: node could not be made";
+        std::cout << "addComponent: node could not be made\n";
         assert(false);
     }
 
@@ -54,6 +55,11 @@ std::map<Node*, std::map<IoType, std::list<Node*>>> Circuit::getProbeNodes()
 const std::list<Node*>& Circuit::getInputs(const NodeType& nodeType, Node* node)
 {
     return nodeCircuit.getInputs(nodeType, node);
+}
+
+std::list<Node*>& Circuit::getOutputs(const NodeType& layerType, Node* node)
+{
+    return this->nodeCircuit.getOutputs(layerType, node);
 }
 
 void Circuit::addAllNodesToCircuit(const std::map<std::string, std::string>& nodeDescriptions)
@@ -84,53 +90,10 @@ void Circuit::addAllNodesToCircuit(const std::map<std::string, std::string>& nod
 void Circuit::addAllEdgesToCircuit(const std::map<std::string, std::vector<std::string>>& nodeEdges)
 {
 
-    std::map<std::string, std::vector<std::string>>::iterator itTop = nodeEdges->begin();
-
-    while(itTop != nodeEdges.end())
-    {
-     
-        for(int i = 0; i < itTop->second.end(); i++)
-        {
-            this->linkComponent(itTop->first, itTop->second.at(i));
-
-     	}
-
-        itTop++;
-	}
-
-
-    std::cout << "Edgy" << std::endl;
-
-    std::string line;
-    std::string output;
-    bool complete = false;
-
-    for (int i = 0; i < edges.size(); i++)
-    {
-        line = edges.at(i).at(1);
-        for (int j = 0; j < line.length(); j++)
-        {
-            if (line[j] == ',')
-            {
-                complete = true;
-            }
-
-            else if ((line[j] != ',') && (complete == false))
-            {
-                output += line[j];
-            }
-
-            if (complete)
-            {
-                std::cout << output << std::endl;
-                this->linkComponent(edges.at(i).at(0), output);
-                complete = false;
-                output.clear();
-            }
-
+    for (auto const& p : nodeEdges) {
+        for (auto const& b : p.second) {
+            this->linkComponent(p.first, b);
         }
-        complete = false;
-        output.clear();
-        line.clear();
+
     }
 }

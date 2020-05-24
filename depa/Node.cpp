@@ -52,14 +52,30 @@ void Node::onEventInput()
 
 void Node::onEventOutput()
 {
-    for (auto const & p : this->getInputs()) {
+    //std::cout << "Node: " << this->getNodeID() << "\tOutput: " << this->getOutput() << std::endl;
+    for (auto const & p : this->getOutputs()) {
         p->onEventInput();
     }
 }
 
+void Node::setNodeType(const NodeType& type)
+{
+    this->_nodeType = type;
+}
+
+NodeType Node::getNodeType() const
+{
+    return this->_nodeType;
+}
+
 const std::list<Node*>& Node::getInputs()
 {
-    return this->_circuit->getInputs(ENUM_LOGIC_NODE, this);
+    return this->_circuit->getInputs(this->_nodeType, this);
+}
+
+std::list<Node*>& Node::getOutputs()
+{
+    return this->_circuit->getOutputs(this->_nodeType, this);
 }
 
 std::string Node::getNodeID() {

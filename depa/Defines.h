@@ -18,6 +18,7 @@
 #define CHAR_COMMENT				'#'
 #define CHAR_DESCRIPTION_SEPERATOR	':'
 #define CHAR_SEPARATOR				','
+#define CHAR_LINE_END				';'
 
 typedef enum {ENUM_INPUT_NODE, ENUM_LOGIC_NODE, ENUM_PROBE_NODE, ENUM_ERROR_TYPE} NodeType;
 typedef enum {ENUM_INPUT, ENUM_OUTPUT} IoType;

@@ -22,15 +22,10 @@ void NodeDatabase::addNode(NodeType nodeType, Node *baseNode)
     std::map<IoType, std::list<Node*>> tempMap;
     std::list<Node*> emptyList;
 
-    tempMap.insert(std::pair<const IoType, std::list<Node*>>(ENUM_INPUT, emptyList));
-
     nodeDb.at(nodeType).insert(std::pair<Node*, std::map<IoType, std::list<Node*>>>(baseNode, tempMap));
 
-    tempMap.clear();
-
-    tempMap.insert(std::pair<const IoType, std::list<Node*>>(ENUM_OUTPUT, emptyList));
-
-    nodeDb.at(nodeType).insert(std::pair<Node*, std::map<IoType, std::list<Node*>>>(baseNode, tempMap));
+    nodeDb.at(nodeType).at(baseNode).insert(std::pair<const IoType, std::list<Node*>>(ENUM_INPUT, emptyList));
+    nodeDb.at(nodeType).at(baseNode).insert(std::pair<const IoType, std::list<Node*>>(ENUM_OUTPUT, emptyList));
 }
 
 void NodeDatabase::addInput(NodeType nodeType, Node *baseNode, Node *inputNode)
@@ -63,9 +58,11 @@ void NodeDatabase::addOutput(NodeType nodeType, Node *baseNode, Node *outputNode
 const std::list<Node*>& NodeDatabase::getInputs(NodeType nodeType, Node *baseNode)
 {
     assert(nodeDb.at(nodeType).empty() != true);
-    assert(nodeDb.at(nodeType).at(baseNode).empty() != true);
+    //assert(nodeDb.at(nodeType).at(baseNode).empty() != true);
+    assert(nodeDb.at(nodeType).at(baseNode).size() != 0);
 
     return nodeDb.at(nodeType).at(baseNode).at(ENUM_INPUT);
+    //nodeType->nodeAddr
 }
 
 std::list<Node*>& NodeDatabase::getOutputs(NodeType nodeType, Node *baseNode)

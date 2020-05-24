@@ -39,6 +39,9 @@ bool AND::compareValues()
     }
 
     this->setOutput(result);
+
+    std::cout << "nodeId: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
+
     this->onEventOutput();
 
     return true;

@@ -23,6 +23,7 @@ InputNode::~InputNode()
 
 bool InputNode::compareValues()
 {
+    std::cout << "nodeId: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
     this->onEventOutput();
     return true;
 }
@@ -32,15 +33,10 @@ Node* InputNode::clone() const
     return new InputNode;
 }
 
-void InputNode::setNodeID(std::string newNodeID)
-{
-    nodeID = newNodeID;
-}
-
 void InputNode::onEventOutput()
 {
     assert(this->getOutput() != UNDF);
-    for (const auto& p : this->getInputs()) {
+    for (const auto& p : this->getOutputs()) {
         p->onEventInput();
     }
 }

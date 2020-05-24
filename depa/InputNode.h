@@ -12,14 +12,11 @@ private:
     InputNode(std::string id);
 
     static InputNode Instance;
-    std::vector<bool>inputValues;
-    std::string nodeID;
 
 public:
     virtual  ~InputNode();
 
     bool compareValues() override;
     Node* clone() const  override;
-    void setNodeID(std::string nodeID) override;
     void onEventOutput() override;
 };
