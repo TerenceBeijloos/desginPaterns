@@ -1,4 +1,6 @@
 #include "NodeDatabase.h"
+#include "ErrorHandling.h"
+
 #include <vector>
 #include <iostream>
 #include <iterator>
@@ -57,18 +59,16 @@ void NodeDatabase::addOutput(NodeType nodeType, Node *baseNode, Node *outputNode
 
 const std::list<Node*>& NodeDatabase::getInputs(NodeType nodeType, Node *baseNode)
 {
-    assert(nodeDb.at(nodeType).empty() != true);
-    //assert(nodeDb.at(nodeType).at(baseNode).empty() != true);
-    assert(nodeDb.at(nodeType).at(baseNode).size() != 0);
+    ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "nodeDb nodeType map is uninitialized.", nodeDb.at(nodeType).empty());
+    ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "nodeDb baseNode map is uninitialized.", nodeDb.at(nodeType).at(baseNode).empty());
 
     return nodeDb.at(nodeType).at(baseNode).at(ENUM_INPUT);
-    //nodeType->nodeAddr
 }
 
 std::list<Node*>& NodeDatabase::getOutputs(NodeType nodeType, Node *baseNode)
 {
-    assert(nodeDb.at(nodeType).empty() != true);
-    assert(nodeDb.at(nodeType).at(baseNode).empty() != true);
+    ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "nodeDb nodeType map is uninitialized.", nodeDb.at(nodeType).empty());
+    ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "nodeDb baseNode map is uninitialized.", nodeDb.at(nodeType).at(baseNode).empty());
 
     return nodeDb.at(nodeType).at(baseNode).at(ENUM_OUTPUT);
 }

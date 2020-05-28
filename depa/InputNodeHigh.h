@@ -4,17 +4,17 @@
 #include <string>
 #include "Defines.h"
 
-class InputNode : public  Node
+class InputNodeHigh : public  Node
 {
 
 private:
-    InputNode();
-    InputNode(std::string id);
+    InputNodeHigh();
+    InputNodeHigh(std::string id);
 
-    static InputNode Instance;
+    static InputNodeHigh Instance;
 
 public:
-    virtual  ~InputNode();
+    virtual  ~InputNodeHigh();
 
     bool compareValues() override;
     Node* clone() const  override;

@@ -69,9 +69,6 @@
     <ClCompile Include="ProbeNode.cpp">
       <Filter>Source Files\Nodes</Filter>
     </ClCompile>
-    <ClCompile Include="InputNode.cpp">
-      <Filter>Source Files\Nodes</Filter>
-    </ClCompile>
     <ClCompile Include="Circuit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -88,6 +85,15 @@
       <Filter>Source Files\IO</Filter>
     </ClCompile>
     <ClCompile Include="NodeDatabase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputNodeHigh.cpp">
+      <Filter>Source Files\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="InputNodeLow.cpp">
+      <Filter>Source Files\Nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="ErrorHandling.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,9 +122,6 @@
     <ClInclude Include="ProbeNode.h">
       <Filter>Header Files\Node</Filter>
     </ClInclude>
-    <ClInclude Include="InputNode.h">
-      <Filter>Header Files\Node</Filter>
-    </ClInclude>
     <ClInclude Include="XOR.h">
       <Filter>Header Files\logicGates</Filter>
     </ClInclude>
@@ -144,6 +147,15 @@
       <Filter>Header Files\IO</Filter>
     </ClInclude>
     <ClInclude Include="NodeDatabase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputNodeHigh.h">
+      <Filter>Header Files\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="InputNodeLow.h">
+      <Filter>Header Files\Node</Filter>
+    </ClInclude>
+    <ClInclude Include="ErrorHandling.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -140,11 +140,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ErrorHandling.cpp" />
+    <ClCompile Include="InputNodeLow.cpp" />
     <ClCompile Include="NodeDatabase.cpp" />
     <ClCompile Include="AND.cpp" />
     <ClCompile Include="Circuit.cpp" />
     <ClCompile Include="InputFileHandler.cpp" />
-    <ClCompile Include="InputNode.cpp" />
+    <ClCompile Include="InputNodeHigh.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NAND.cpp" />
     <ClCompile Include="Node.cpp" />
@@ -158,6 +160,8 @@
     <ClCompile Include="XOR.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ErrorHandling.h" />
+    <ClInclude Include="InputNodeLow.h" />
     <ClInclude Include="NodeDatabase.h" />
     <ClInclude Include="AND.h" />
     <ClInclude Include="Circuit.h" />
@@ -165,7 +169,7 @@
     <ClInclude Include="factoryMethod.h" />
     <ClInclude Include="factoryMethod.hpp" />
     <ClInclude Include="InputFileHandler.h" />
-    <ClInclude Include="InputNode.h" />
+    <ClInclude Include="InputNodeHigh.h" />
     <ClInclude Include="NAND.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="NOR.h" />

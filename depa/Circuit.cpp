@@ -2,6 +2,7 @@
 #include "factoryMethod.h"
 #include "Circuit.h"
 #include <string>
+#include "ErrorHandling.h"
 
 bool Circuit::checkRecursiveLoop(Node* node, const std::string& search) {
 
@@ -52,8 +53,9 @@ Circuit::Circuit(const std::map<std::string, std::string>& nodeDescriptions, con
 {
     this->addAllNodesToCircuit(nodeDescriptions);
     this->addAllEdgesToCircuit(nodeEdges);
-    assert(this->checkEnds()); //GEEN ASSERTS -> ERROR HANDLING
-    assert(this->checkLoops());
+    
+    ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "One or more nodes have unconnected outputs.", this->checkEnds());
+    ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "The output of one or more nodes is directly or indirectly connected to its own input.", this->checkLoops());
     
 }
 
@@ -75,11 +77,8 @@ Node *Circuit::addComponent(const NodeType& nodeLayerType, const std::string& no
     }
     else
     {
-        std::cout << "addComponent: node could not be made\n";
-        assert(false); //ERROR HANDLING
+        ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "Node could not be created.", true);
     }
-
-    //std::cout << "pNode: " << pNode->getNodeID();
 
     return pNode;
 }
@@ -112,19 +111,15 @@ std::list<Node*>& Circuit::getOutputs(const NodeType& layerType, Node* node)
 
 void Circuit::addAllNodesToCircuit(const std::map<std::string, std::string>& nodeDescriptions)
 {
-    //ONDERZOEK VISITOR IMPLEMENTATIE -> SPLITS INPUT_NODE in INPUT_NODE_HIGH en LOW.
+    //ONDERZOEK VISITOR IMPLEMENTATIE
 
     for (auto const& p : nodeDescriptions) {
         std::string nodeId = p.first;
         std::string nodeDescription = p.second;
 
-        if (nodeDescription == STR_INPUT_HIGH)
+        if (nodeDescription == STR_INPUT_HIGH || nodeDescription == STR_INPUT_LOW)
         {
-            this->addComponent(ENUM_INPUT_NODE, STR_INPUT_NODE, nodeId)->setOutput(HIGH);
-        }
-        else if (nodeDescription == STR_INPUT_LOW)
-        {
-            this->addComponent(ENUM_INPUT_NODE, STR_INPUT_NODE, nodeId)->setOutput(LOW);
+            this->addComponent(ENUM_INPUT_NODE, nodeDescription, nodeId);
         }
         else if (nodeDescription == STR_PROBE)
         {

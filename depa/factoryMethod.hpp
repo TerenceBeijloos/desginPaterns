@@ -6,7 +6,7 @@ FactoryMethod<nodeType,Class>::assign( const nodeType& chosenNodeType, const Cla
 {
     static  FactoryMap &cMap    = getMap();
 
-    assert( cMap.find(chosenNodeType) == cMap.end() );
+    ErrorHandling::recoverableError(typeid(this).name(), __FUNCTION__, "Assigning an already existing nodeType.", cMap.find(chosenNodeType) != cMap.end());
 
     cMap[chosenNodeType] = pClass;
 }
