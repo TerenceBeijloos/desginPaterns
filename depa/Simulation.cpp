@@ -30,6 +30,8 @@ std::string Simulation::createCircuit(std::string circuitID, std::string fileNam
 
     Circuit *newCircuit = new Circuit(fileHandler.getNodeDescriptions(), fileHandler.getNodeEdges());
 
+    //DELETE ALS NON-VALID + FOUTMELDING (CLASS VOOR ERROR HANDLING?)
+
     _circuitMap.insert(std::pair<std::string, Circuit*>(circuitID, newCircuit));
 
     return circuitID;

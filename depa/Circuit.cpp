@@ -52,8 +52,9 @@ Circuit::Circuit(const std::map<std::string, std::string>& nodeDescriptions, con
 {
     this->addAllNodesToCircuit(nodeDescriptions);
     this->addAllEdgesToCircuit(nodeEdges);
-    assert(this->checkEnds());
+    assert(this->checkEnds()); //GEEN ASSERTS -> ERROR HANDLING
     assert(this->checkLoops());
+    
 }
 
 Circuit::~Circuit()
@@ -75,7 +76,7 @@ Node *Circuit::addComponent(const NodeType& nodeLayerType, const std::string& no
     else
     {
         std::cout << "addComponent: node could not be made\n";
-        assert(false);
+        assert(false); //ERROR HANDLING
     }
 
     //std::cout << "pNode: " << pNode->getNodeID();
@@ -111,6 +112,8 @@ std::list<Node*>& Circuit::getOutputs(const NodeType& layerType, Node* node)
 
 void Circuit::addAllNodesToCircuit(const std::map<std::string, std::string>& nodeDescriptions)
 {
+    //ONDERZOEK VISITOR IMPLEMENTATIE -> SPLITS INPUT_NODE in INPUT_NODE_HIGH en LOW.
+
     for (auto const& p : nodeDescriptions) {
         std::string nodeId = p.first;
         std::string nodeDescription = p.second;

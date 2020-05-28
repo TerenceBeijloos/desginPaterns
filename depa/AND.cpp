@@ -2,6 +2,7 @@
 #include <string>
 
 #include <iostream>
+#include <atomic>
 
 AND AND::Instance( STR_AND );
 
@@ -11,16 +12,18 @@ AND::AND()
 
 AND::AND( std::string id ) : Node(id)
 {
+    //std::atomic<IoType> test; KIJK HIER NAAR!
 }
 
 AND::~AND()
 {
 }
 
-bool AND::compareValues()
+bool AND::compareValues() //DOET MEER DAN VERGELIJKEN VAN VALUES. SPLITSEN OF NAAM VERANDEREN.
 {
     IoState result = HIGH;
-
+    //BETERE NAAM VOOR VARIABELEN
+    //GEEN MUTEX MAAR LOCKGUARD! ZIE R30
     for (const auto& p : this->getInputs()) {
         if (p->getOutput() == UNDF)
         {
