@@ -21,7 +21,7 @@ void Simulation::start(const std::string& circuitSelected)
     ThreadHandler threadRipper(this->_circuitMap.at(circuitSelected)->nodeCircuit);
 
     while (threadRipper.startNextWave());
-
+    threadRipper.joinJoiner();
     //for (auto const& itLogicNode : this->_circuitMap.at(circuitSelected)->nodeCircuit.getLogicNodes()) {
     //    itLogicNode.first->spawnThread();
     //}

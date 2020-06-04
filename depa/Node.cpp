@@ -108,7 +108,10 @@ bool Node::allInputsDefined()
 
 void Node::spawnThread()
 {
-    this->_thd = std::thread(&Node::processOutput, this);
+    if (!this->_thd.joinable())
+    {
+        this->_thd = std::thread(&Node::processOutput, this);
+    }
     //this->_thd.detach();
 }
 

@@ -15,15 +15,19 @@ public:
 	void setNodeDatabase(NodeDatabase& nodeDb);
 
 	bool startNextWave();
-	void joinWave();
+	//void joinWave();
 	void startWave();
+
+	void joinJoiner();
 
 private:
 	NodeDatabase _nodeDb;
 	std::map<Node*, unsigned int> _currentWave;
 
+	std::thread _joiner;
+
 	bool updateWave();
-	
 	void nodeDbErorCheck();
+	void startJoiner();
 };
 

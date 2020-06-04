@@ -6,20 +6,17 @@ bool ThreadHandler::startNextWave()
 { 
 	this->nodeDbErorCheck();
 
+	if (!this->_joiner.joinable())
+	{
+		this->_joiner = std::thread(&ThreadHandler::startJoiner, this);
+	}
+
 	if (!this->updateWave()) {
 		return false;
 	}
 	this->startWave();
-	this->joinWave();
 
 	return true;
-}
-
-void ThreadHandler::joinWave()
-{
-	for (auto const& itNode : this->_currentWave) {
-		itNode.first->joinNode();
-	}
 }
 
 void ThreadHandler::startWave()
@@ -85,3 +82,45 @@ void ThreadHandler::setNodeDatabase(NodeDatabase& nodeDb)
 	this->_nodeDb = nodeDb;
 	this->nodeDbErorCheck();
 }
+
+void ThreadHandler::startJoiner()
+{
+	for (auto const& itNode : this->_nodeDb.getInputNodes()) {
+		itNode.first->joinNode();
+	}
+
+	std::vector<Node*> nodes;
+	for (auto const& itNode : this->_nodeDb.getLogicNodes()) {
+		nodes.push_back(itNode.first);
+	}
+
+	while (!nodes.empty())
+	{
+		for (auto const& itNode : nodes) {
+			if (itNode->getOutput() != UNDF)
+			{
+				itNode->joinNode();
+				nodes.erase(std::remove(nodes.begin(), nodes.end(), itNode), nodes.end());
+			}
+		}
+	}
+
+	for (auto const& itProbe : this->_nodeDb.getProbeNodes()) {
+		itProbe.first->joinNode();
+	}
+
+}
+
+void ThreadHandler::joinJoiner()
+{
+	if (this->_joiner.joinable()) {
+		this->_joiner.join();
+	}
+}
+
+//void ThreadHandler::joinWave()
+//{
+//	for (auto const& itNode : this->_currentWave) {
+//		itNode.first->joinNode();
+//	}
+//}
