@@ -16,6 +16,7 @@ private:
 public:
     virtual  ~ProbeNode();
 
+    void accept(Visitor& v) override;
     bool processLogic() override;
     Node* clone() const  override;
 

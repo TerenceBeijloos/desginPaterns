@@ -3,6 +3,7 @@
 #include "Circuit.h"
 #include <string>
 #include "ErrorHandling.h"
+#include "AddComponentVisitor.h"
 
 bool Circuit::checkRecursiveLoop(Node* node, const std::string& search) 
 {
@@ -68,24 +69,19 @@ Circuit::~Circuit()
 {
 }
 
-Node *Circuit::addComponent(const NodeType& nodeLayerType, const std::string& nodeCreateType, const std::string& nodeID)
+Node *Circuit::addComponent(Node* node)
 {
 
-	Node  *pNode  = Factory::FactoryMethod<std::string,Node>::create(nodeCreateType);
-    
-    if ( pNode != nullptr )
+    if (node != nullptr)
     {
-        pNode->setNodeID(nodeID);
-        pNode->setCircuit(this);
-        pNode->setNodeType(nodeLayerType);
-        this->nodeCircuit.addNode(nodeLayerType,pNode);
+        this->nodeCircuit.addNode(node->getNodeType(), node);
     }
     else
     {
         ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "Node could not be created.", true);
     }
 
-    return pNode;
+    return node;
 }
 
 void Circuit::linkComponent(std::string baseNode, std::string outputNode)
@@ -122,18 +118,13 @@ void Circuit::addAllNodesToCircuit(const std::map<std::string, std::string>& nod
         std::string nodeId = itDescription.first;
         std::string nodeDescription = itDescription.second;
 
-        if (nodeDescription == STR_INPUT_HIGH || nodeDescription == STR_INPUT_LOW)
-        {
-            this->addComponent(ENUM_INPUT_NODE, nodeDescription, nodeId);
-        }
-        else if (nodeDescription == STR_PROBE)
-        {
-            this->addComponent(ENUM_PROBE_NODE, nodeDescription, nodeId);
-        }
-        else
-        {
-            this->addComponent(ENUM_LOGIC_NODE, nodeDescription, nodeId);
-        }
+        Node* pNode = Factory::FactoryMethod<std::string, Node>::create(nodeDescription);
+        AddComponentVisitor visitor;
+
+        pNode->setCircuit(this);
+        pNode->setNodeID(nodeId);
+        
+
     }
 }
 

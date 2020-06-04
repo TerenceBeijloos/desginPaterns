@@ -1,9 +1,11 @@
 #pragma once
 
 #include "Node.h"
+#include "Defines.h"
+
 #include <vector>
 #include <string>
-#include "Defines.h"
+
 
 class OR : public  Node
 {
@@ -17,6 +19,7 @@ private:
 public:
     virtual  ~OR();
 
+    void accept(Visitor& v) override;
     bool processLogic() override;
     Node *clone() const  override;   
  };

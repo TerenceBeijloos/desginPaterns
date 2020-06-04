@@ -4,19 +4,19 @@
 #include <string>
 #include "Defines.h"
 
-class AND : public  Node
+class BUFFER : public  Node
 {
 
 private:
-    AND();
-    AND( std::string id);
+    BUFFER();
+    BUFFER(std::string id);
 
-    static AND Instance;
+    static BUFFER Instance;
 
 public:
-    virtual  ~AND();
+    virtual  ~BUFFER();
 
     void accept(Visitor& v) override;
     bool processLogic() override;
-    Node *clone() const  override;  
- };
+    Node* clone() const  override;
+};

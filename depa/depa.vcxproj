@@ -140,6 +140,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddComponentVisitor.cpp" />
+    <ClCompile Include="BUFFER.cpp" />
     <ClCompile Include="ErrorHandling.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="InputNodeLow.cpp" />
@@ -159,9 +161,12 @@
     <ClCompile Include="ProbeNode.cpp" />
     <ClCompile Include="Simulation.cpp" />
     <ClCompile Include="ThreadHandler.cpp" />
+    <ClCompile Include="XNOR.cpp" />
     <ClCompile Include="XOR.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddComponentVisitor.h" />
+    <ClInclude Include="BUFFER.h" />
     <ClInclude Include="ErrorHandling.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="InputNodeLow.h" />
@@ -183,6 +188,8 @@
     <ClInclude Include="ProbeNode.h" />
     <ClInclude Include="Simulation.h" />
     <ClInclude Include="ThreadHandler.h" />
+    <ClInclude Include="Visitor.h" />
+    <ClInclude Include="XNOR.h" />
     <ClInclude Include="XOR.h" />
   </ItemGroup>
   <ItemGroup>

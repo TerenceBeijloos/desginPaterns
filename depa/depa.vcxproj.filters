@@ -40,6 +40,9 @@
     <Filter Include="Source Files\IO">
       <UniqueIdentifier>{9cc6b062-dcaf-4e24-ab15-6345a803bfdd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Visitors">
+      <UniqueIdentifier>{b8eb0ead-9f79-49fa-aa19-923fbe7babdc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -101,6 +104,15 @@
     </ClCompile>
     <ClCompile Include="ThreadHandler.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AddComponentVisitor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="XNOR.cpp">
+      <Filter>Source Files\logicGates</Filter>
+    </ClCompile>
+    <ClCompile Include="BUFFER.cpp">
+      <Filter>Source Files\logicGates</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +181,18 @@
     </ClInclude>
     <ClInclude Include="ThreadHandler.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XNOR.h">
+      <Filter>Header Files\logicGates</Filter>
+    </ClInclude>
+    <ClInclude Include="BUFFER.h">
+      <Filter>Header Files\logicGates</Filter>
+    </ClInclude>
+    <ClInclude Include="AddComponentVisitor.h">
+      <Filter>Header Files\Visitors</Filter>
+    </ClInclude>
+    <ClInclude Include="Visitor.h">
+      <Filter>Header Files\Visitors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

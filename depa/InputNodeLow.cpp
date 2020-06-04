@@ -1,5 +1,6 @@
 #include "InputNodeLow.h"
 #include "ErrorHandling.h"
+#include "Visitor.h"
 
 #include <string>
 #include <iostream>
@@ -18,6 +19,11 @@ InputNodeLow::InputNodeLow(std::string id) : Node(id)
 
 InputNodeLow::~InputNodeLow()
 {
+}
+
+void InputNodeLow::accept(Visitor& v)
+{
+    v.visit(this);
 }
 
 bool InputNodeLow::processLogic()

@@ -5,8 +5,9 @@
 #include "Output.h"
 #include <thread>
 
-//#include "NodeThread.h"
 
+//#include "NodeThread.h"
+class Visitor;
 class Circuit;
 
 class Node : public Output
@@ -34,7 +35,9 @@ public:
     //virtual void onEventInput();
     //virtual void onEventOutput();
     //virtual bool triggerOutputs();
+    virtual void accept(Visitor& v) = 0;
 
+    virtual void addToCircuit();
     virtual void spawnThread();
     virtual void joinNode();
 

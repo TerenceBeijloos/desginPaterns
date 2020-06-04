@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Node.h"
-#include <vector>
 #include <string>
 #include "Defines.h"
 
@@ -17,6 +16,7 @@ private:
 public:
     virtual  ~NOT();
 
+    void accept(Visitor& v) override;
     bool processLogic() override;
     Node *clone() const  override;   
  };

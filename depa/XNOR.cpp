@@ -1,26 +1,28 @@
-#include "XOR.h"
+#include "XNOR.h"
 #include "Visitor.h"
 
-XOR XOR::Instance( STR_XOR );
+XNOR XNOR::Instance(STR_XNOR);
 
-XOR::XOR()
+XNOR::XNOR()
 {
 }
 
-XOR::XOR( std::string id ) : Node( id )
+XNOR::XNOR(std::string id) : Node(id)
 {
 }
 
-XOR::~XOR()
+XNOR::~XNOR()
 {
 }
 
-void XOR::accept(Visitor& v)
+void XNOR::accept(Visitor& v)
 {
     v.visit(this);
 }
 
-bool XOR::processLogic() {
+bool XNOR::processLogic()
+{
+
     unsigned int inputsHigh = 0;
 
     for (const auto& itInput : this->getInputs()) {
@@ -36,14 +38,13 @@ bool XOR::processLogic() {
         }
     }
 
-    IoState result = (inputsHigh % 2) ? HIGH : LOW;
+    IoState result = (inputsHigh % 2) ? LOW : HIGH;
     this->setOutput(result);
 
     return false;
 }
 
-Node* XOR::clone() const
+Node* XNOR::clone() const
 {
-    return new XOR;
+	return new XNOR;
 }
-

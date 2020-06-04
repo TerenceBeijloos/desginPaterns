@@ -2,10 +2,11 @@
 
 #include "Node.h"
 #include "FactoryMethod.h"
+#include "Circuit.h"
+#include "Visitor.h"
 
 #include <iostream>
 #include <string>
-#include "Circuit.h"
 #include <mutex>
 
 Node::Node()
@@ -105,6 +106,11 @@ bool Node::allInputsDefined()
 //
 //    return true;
 //}
+
+void Node::addToCircuit()
+{
+    this->_circuit->addComponent(this);
+}
 
 void Node::spawnThread()
 {

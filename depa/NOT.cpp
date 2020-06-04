@@ -1,6 +1,7 @@
 #include "NOT.h"
-#include <string>
+#include "Visitor.h"
 
+#include <string>
 #include <iostream>
 
 NOT NOT::Instance( STR_NOT );
@@ -15,6 +16,11 @@ NOT::NOT( std::string id ) : Node( id )
 
 NOT::~NOT()
 {
+}
+
+void NOT::accept(Visitor& v)
+{
+    v.visit(this);
 }
 
 bool NOT::processLogic()

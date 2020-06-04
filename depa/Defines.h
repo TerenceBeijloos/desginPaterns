@@ -6,6 +6,8 @@
 #define STR_NAND					"NAND"
 #define STR_NOR						"NOR"
 #define STR_XOR						"XOR"
+#define STR_XNOR					"XNOR"
+#define STR_BUFFER					"BUFFER"
 
 #define STR_INPUT_HIGH				"INPUT_HIGH"
 #define STR_INPUT_LOW				"INPUT_LOW"

@@ -1,4 +1,6 @@
 #include "AND.h"
+#include "Visitor.h"
+
 #include <string>
 
 #include <iostream>
@@ -17,6 +19,11 @@ AND::AND( std::string id ) : Node(id)
 
 AND::~AND()
 {
+}
+
+void AND::accept(Visitor& v)
+{
+    v.visit(this);
 }
 
 bool AND::processLogic()

@@ -1,4 +1,5 @@
 #include "ProbeNode.h"
+#include "Visitor.h"
 
 #include <string>
 #include <iostream>
@@ -23,6 +24,11 @@ ProbeNode::~ProbeNode()
 //{
 //    this->processOutput();
 //}
+
+void ProbeNode::accept(Visitor& v)
+{
+    v.visit(this);
+}
 
 bool ProbeNode::processLogic()
 {

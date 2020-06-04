@@ -16,6 +16,7 @@ private:
 public:
     virtual  ~InputNodeHigh();
 
+    void accept(Visitor& v) override;
     bool processLogic() override;
     Node* clone() const  override;
     //void onEventOutput() override;

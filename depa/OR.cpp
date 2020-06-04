@@ -1,6 +1,7 @@
 #include "OR.h"
-#include <string>
+#include "Visitor.h"
 
+#include <string>
 #include <iostream>
 
 OR OR::Instance( STR_OR );
@@ -15,6 +16,11 @@ OR::OR( std::string id ) : Node( id )
 
 OR::~OR()
 {
+}
+
+void OR::accept(Visitor& v)
+{
+    v.visit(this);
 }
 
 bool OR::processLogic()

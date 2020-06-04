@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "Defines.h"
+//#include "Visitor.h"
 
 class NAND : public  Node
 {
@@ -17,6 +18,7 @@ private:
 public:
     virtual  ~NAND();
 
+    void accept(Visitor &v) override;
     bool processLogic() override;
     Node *clone() const  override;   
  };

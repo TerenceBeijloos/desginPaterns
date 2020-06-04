@@ -16,7 +16,7 @@ public:
 	Circuit(const std::map<std::string, std::string>& nodeDescriptions, const std::map<std::string, std::vector<std::string>>& nodeEdges, bool& error);
 	virtual ~Circuit();
 
-	Node *addComponent(const NodeType& nodeType, const std::string& strNodeType, const std::string& nodeID);
+	Node* addComponent(Node* node);
 	void linkComponent(std::string baseNode, std::string outputNode);
 	const std::list<Node*>& getInputs(const NodeType&, Node*);
 	std::list<Node*>& getOutputs(const NodeType&, Node*);

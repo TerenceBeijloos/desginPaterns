@@ -1,4 +1,5 @@
 #include "NAND.h"
+#include "Visitor.h"
 
 #include <iostream>
 #include <string>
@@ -15,6 +16,11 @@ NAND::NAND( std::string id ) : Node( id )
 
 NAND::~NAND()
 {
+}
+
+void NAND::accept(Visitor& v)
+{
+    v.visit(this);
 }
 
 bool NAND::processLogic()

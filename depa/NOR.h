@@ -17,6 +17,7 @@ private:
 public:
     virtual  ~NOR();
 
+    void accept(Visitor& v) override;
     bool processLogic() override;
     Node *clone() const  override;
  };

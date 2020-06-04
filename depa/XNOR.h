@@ -4,19 +4,19 @@
 #include <string>
 #include "Defines.h"
 
-class AND : public  Node
+class XNOR : public  Node
 {
 
 private:
-    AND();
-    AND( std::string id);
+    XNOR();
+    XNOR(std::string id);
 
-    static AND Instance;
+    static XNOR Instance;
 
 public:
-    virtual  ~AND();
+    virtual  ~XNOR();
 
     void accept(Visitor& v) override;
     bool processLogic() override;
-    Node *clone() const  override;  
- };
+    Node* clone() const  override;
+};

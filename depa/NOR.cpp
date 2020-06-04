@@ -1,6 +1,7 @@
 #include "NOR.h"
-#include <string>
+#include "Visitor.h"
 
+#include <string>
 #include <iostream>
 
 NOR NOR::Instance( STR_NOR );
@@ -15,6 +16,11 @@ NOR::NOR( std::string id ) : Node( id )
 
 NOR::~NOR()
 {
+}
+
+void NOR::accept(Visitor& v)
+{
+    v.visit(this);
 }
 
 bool NOR::processLogic()
