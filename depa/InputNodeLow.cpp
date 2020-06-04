@@ -20,10 +20,9 @@ InputNodeLow::~InputNodeLow()
 {
 }
 
-bool InputNodeLow::compareValues()
+bool InputNodeLow::processLogic()
 {
-    std::cout << "nodeId: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
-    this->onEventOutput();
+    this->setOutput(LOW);
     return true;
 }
 
@@ -32,12 +31,10 @@ Node* InputNodeLow::clone() const
     return new InputNodeLow;
 }
 
-void InputNodeLow::onEventOutput()
-{
-    ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "Input node has an undefined output state.", this->getOutput() == UNDF);
-
-    this->joinNode();
-    for (const auto& p : this->getOutputs()) {
-        p->onEventInput();
-    }
-}
+//void InputNodeLow::onEventOutput()
+//{
+//    ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "Input node has an undefined output state.", this->getOutput() == UNDF);
+//
+//    //this->joinNode();
+//    //this->triggerOutputs();
+//}

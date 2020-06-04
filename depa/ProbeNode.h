@@ -16,7 +16,9 @@ private:
 public:
     virtual  ~ProbeNode();
 
-    bool compareValues() override;
+    bool processLogic() override;
     Node* clone() const  override;
-    void onEventOutput() override;
+
+    //void onEventInput() override;
+    //void onEventOutput() override;
 };

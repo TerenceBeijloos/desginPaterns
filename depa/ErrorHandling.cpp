@@ -9,7 +9,7 @@ ErrorHandling::~ErrorHandling()
 {
 }
 
-void ErrorHandling::recoverableError(const std::string& className, const std::string& methodName, const std::string& errorDescription, const bool& error)
+bool ErrorHandling::recoverableError(const std::string& className, const std::string& methodName, const std::string& errorDescription, const bool& error)
 {
 	if (error)
 	{
@@ -17,7 +17,8 @@ void ErrorHandling::recoverableError(const std::string& className, const std::st
 		std::cout << "In " << className << "::" << methodName << std::endl;
 		std::cout << "Description: " << errorDescription << std::endl;
 	}
-
+	
+	return error;
 }
 
 void ErrorHandling::fatalError(const std::string& className, const std::string& methodName, const std::string& errorDescription, const bool& error)

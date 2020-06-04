@@ -16,27 +16,32 @@ private:
     NodeType _nodeType;
     Circuit* _circuit;
     std::thread _thd;
+    std::mutex _mtx;
     //NodeThread _nodeThread;
 protected:
                     Node();
                     Node(std::string id);
 public:
     virtual        ~Node();
-    virtual bool compareValues();
+    virtual bool processOutput();
+    virtual bool processLogic() = 0;
 
     virtual void setNodeID(std::string nodeID);
     virtual std::string getNodeID();
 
     virtual void setCircuit(Circuit*);
 
-    virtual void onEventInput();
-    virtual void onEventOutput();
+    //virtual void onEventInput();
+    //virtual void onEventOutput();
+    //virtual bool triggerOutputs();
+
+    virtual void spawnThread();
+    virtual void joinNode();
 
     virtual void setNodeType(const NodeType& type);
     virtual NodeType getNodeType() const;
 
-    virtual bool triggerOutputs();
-    virtual void joinNode();
+    virtual bool allInputsDefined();
 
     const std::list<Node*>& getInputs();
     std::list<Node*>& getOutputs();

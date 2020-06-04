@@ -5,7 +5,7 @@
 #include <iostream>
 #include <iterator>
 #include <list>
-#include <assert.h>
+
 
 NodeDatabase::NodeDatabase()
 {
@@ -91,24 +91,24 @@ std::map<Node*, std::map<IoType, std::list<Node*>>> NodeDatabase::getProbeNodes(
 Node* NodeDatabase::getNode(std::string nodeID)
 {
 
-    std::map<NodeType, std::map<Node*, std::map<IoType, std::list<Node*>>>>::iterator itTop = nodeDb.begin();
+    std::map<NodeType, std::map<Node*, std::map<IoType, std::list<Node*>>>>::iterator itNodeType = nodeDb.begin();
 
     
-    while(itTop != nodeDb.end())
+    while(itNodeType != nodeDb.end())
     {
      
-        std::map<Node*, std::map<IoType, std::list<Node*>>>::iterator it = itTop->second.begin();
+        std::map<Node*, std::map<IoType, std::list<Node*>>>::iterator itBaseNode = itNodeType->second.begin();
         
-        while(it != itTop->second.end())
+        while(itBaseNode != itNodeType->second.end())
         {
-            if (it->first->getNodeID() == nodeID)
+            if (itBaseNode->first->getNodeID() == nodeID)
             {
-                return it->first;
+                return itBaseNode->first;
 			}
-            it++;
+            itBaseNode++;
 		}
 
-        itTop++;
+        itNodeType++;
 	}
 
     return nullptr;
@@ -118,23 +118,23 @@ NodeType NodeDatabase::getNodeType(std::string nodeID)
 {
     Node* tempNodeAddr = getNode(nodeID);
 
-    std::map<NodeType, std::map<Node*, std::map<IoType, std::list<Node*>>>>::iterator itTop = nodeDb.begin();
+    std::map<NodeType, std::map<Node*, std::map<IoType, std::list<Node*>>>>::iterator itNodeType = nodeDb.begin();
 
-    while(itTop != nodeDb.end())
+    while(itNodeType != nodeDb.end())
     {
      
-        std::map<Node*, std::map<IoType, std::list<Node*>>>::iterator it = itTop->second.begin();
+        std::map<Node*, std::map<IoType, std::list<Node*>>>::iterator itBaseNode = itNodeType->second.begin();
         
-        while(it != itTop->second.end())
+        while(itBaseNode != itNodeType->second.end())
         {
-            if (it->first == tempNodeAddr)
+            if (itBaseNode->first == tempNodeAddr)
             {
-                return itTop->first;
+                return itNodeType->first;
 			}
-            it++;
+            itBaseNode++;
 		}
 
-        itTop++;
+        itNodeType++;
 	}
 
     return ENUM_ERROR_TYPE;

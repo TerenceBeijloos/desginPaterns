@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ErrorHandling.cpp" />
+    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="InputNodeLow.cpp" />
     <ClCompile Include="NodeDatabase.cpp" />
     <ClCompile Include="AND.cpp" />
@@ -157,10 +158,12 @@
     <ClCompile Include="OutputFileHandler.cpp" />
     <ClCompile Include="ProbeNode.cpp" />
     <ClCompile Include="Simulation.cpp" />
+    <ClCompile Include="ThreadHandler.cpp" />
     <ClCompile Include="XOR.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ErrorHandling.h" />
+    <ClInclude Include="GUI.h" />
     <ClInclude Include="InputNodeLow.h" />
     <ClInclude Include="NodeDatabase.h" />
     <ClInclude Include="AND.h" />
@@ -179,6 +182,7 @@
     <ClInclude Include="OutputFileHandler.h" />
     <ClInclude Include="ProbeNode.h" />
     <ClInclude Include="Simulation.h" />
+    <ClInclude Include="ThreadHandler.h" />
     <ClInclude Include="XOR.h" />
   </ItemGroup>
   <ItemGroup>

@@ -13,7 +13,7 @@ private:
 	bool checkEnds();
 
 public:
-	Circuit(const std::map<std::string, std::string>& nodeDescriptions, const std::map<std::string, std::vector<std::string>>& nodeEdges);
+	Circuit(const std::map<std::string, std::string>& nodeDescriptions, const std::map<std::string, std::vector<std::string>>& nodeEdges, bool& error);
 	virtual ~Circuit();
 
 	Node *addComponent(const NodeType& nodeType, const std::string& strNodeType, const std::string& nodeID);

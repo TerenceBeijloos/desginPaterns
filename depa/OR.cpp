@@ -17,18 +17,18 @@ OR::~OR()
 {
 }
 
-bool OR::compareValues()
+bool OR::processLogic()
 {
     IoState result = LOW;
 
-    for (const auto& p : this->getInputs()) {
-        if (p->getOutput() == UNDF)
+    for (const auto& itInput : this->getInputs()) {
+        if (itInput->getOutput() == UNDF)
         {
             this->setOutput(UNDF);
             return false;
         }
 
-        if (p->getOutput() == HIGH)
+        if (itInput->getOutput() == HIGH)
         {
             result = HIGH;
         }
@@ -36,8 +36,6 @@ bool OR::compareValues()
     }
 
     this->setOutput(result);
-    //std::cout << "nodeId: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
-    this->onEventOutput();
 
     return true;
 }

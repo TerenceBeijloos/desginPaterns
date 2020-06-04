@@ -51,14 +51,10 @@ bool InputFileHandler::processFile()
 				if ((flag == false) && (!std::isspace(line.at(i))))
 				{
 					name += line.at(i);
-				/*	name[indexn] = line.at(i);
-					indexn++;*/
 				}
 				else if ((flag == true) && (!std::isspace(line.at(i))))
 				{
 					desc += line.at(i);
-					/*desc[indexd] = line.at(i);
-					indexd++;*/
 				}
 			}
 
@@ -113,8 +109,8 @@ void InputFileHandler::addEdge(const std::string& nodeName, const std::vector<st
 		this->_edges.insert(std::pair <const std::string, const std::vector<std::string>>(nodeName, empty));
 	}
 
-	for (auto const& p : nodeDescriptions) {
-		this->_edges.at(nodeName).push_back(p);
+	for (auto const& itDescription : nodeDescriptions) {
+		this->_edges.at(nodeName).push_back(itDescription);
 	}
 }
 
@@ -153,13 +149,11 @@ void InputFileHandler::filterNodes(const char & separator, const std::string& ta
 			else if (flag == true)
 			{
 				flag = false;
-				//std::cout << nodeId << std::endl;
 
 				buffer.push_back(nodeId);
 				nodeId.clear();
 			}
 		}
-	//std::cout << nodeId << std::endl;
 	buffer.push_back(nodeId);
 	nodeId.clear();
 }

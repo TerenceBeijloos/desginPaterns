@@ -1,4 +1,5 @@
 #pragma once
+#include <assert.h>
 
 template <typename nodeType, typename Class>
 void
@@ -6,7 +7,7 @@ FactoryMethod<nodeType,Class>::assign( const nodeType& chosenNodeType, const Cla
 {
     static  FactoryMap &cMap    = getMap();
 
-    ErrorHandling::recoverableError(typeid(this).name(), __FUNCTION__, "Assigning an already existing nodeType.", cMap.find(chosenNodeType) != cMap.end());
+    assert(cMap.find(chosenNodeType) == cMap.end());
 
     cMap[chosenNodeType] = pClass;
 }

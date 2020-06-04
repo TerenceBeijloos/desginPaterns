@@ -4,14 +4,15 @@
 #include <string>
 #include "ErrorHandling.h"
 
-bool Circuit::checkRecursiveLoop(Node* node, const std::string& search) {
+bool Circuit::checkRecursiveLoop(Node* node, const std::string& search) 
+{
 
-    for (auto const& p : node->getOutputs()) {
-        if (p->getNodeID() == search)
+    for (auto const& itOutput : node->getOutputs()) {
+        if (itOutput->getNodeID() == search)
         {
             return false;
         }
-        if (!checkRecursiveLoop(p, search)) {
+        if (!checkRecursiveLoop(itOutput, search)) {
             return false;
         }
     }
@@ -20,42 +21,46 @@ bool Circuit::checkRecursiveLoop(Node* node, const std::string& search) {
 
 bool Circuit::checkLoops()
 {
-    for(auto const &p : this->nodeCircuit.getLogicNodes()){
-        if (!checkRecursiveLoop(p.first,p.first->getNodeID()))
+    for(auto const &itLogicNode : this->nodeCircuit.getLogicNodes()){
+        if (!checkRecursiveLoop(itLogicNode.first, itLogicNode.first->getNodeID()))
         {
-            return false;
+            return true;
         }
     }
-    return true;
+    return false;
 }
 
 bool Circuit::checkEnds()
 {
 
-    for (auto const& p : this->nodeCircuit.getInputNodes()) {
-        if (p.first->getOutputs().empty())
+    for (auto const& itInputNode : this->nodeCircuit.getInputNodes()) {
+        if (itInputNode.first->getOutputs().empty())
         {
-            return false;
+            return true;
         }
     }
 
-    for (auto const& p : this->nodeCircuit.getLogicNodes()) {
-        if (p.first->getOutputs().empty())
+    for (auto const& itLogicNode : this->nodeCircuit.getLogicNodes()) {
+        if (itLogicNode.first->getOutputs().empty())
         {
-            return false;
+            return true;
         }
     }
 
-    return true;
+    return false;
 }
 
-Circuit::Circuit(const std::map<std::string, std::string>& nodeDescriptions, const std::map<std::string, std::vector<std::string>>& nodeEdges)
+Circuit::Circuit(const std::map<std::string, std::string>& nodeDescriptions, const std::map<std::string, std::vector<std::string>>& nodeEdges, bool& error)
 {
     this->addAllNodesToCircuit(nodeDescriptions);
     this->addAllEdgesToCircuit(nodeEdges);
     
-    ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "One or more nodes have unconnected outputs.", this->checkEnds());
-    ErrorHandling::fatalError(typeid(this).name(), __FUNCTION__, "The output of one or more nodes is directly or indirectly connected to its own input.", this->checkLoops());
+    error = ErrorHandling::recoverableError(typeid(this).name(), __FUNCTION__, "One or more nodes have unconnected outputs.", this->checkEnds());
+
+    if (!error)
+    {
+        error = ErrorHandling::recoverableError(typeid(this).name(), __FUNCTION__, "The output of one or more nodes is directly or indirectly connected to its own input.", this->checkLoops());
+    }
     
 }
 
@@ -113,9 +118,9 @@ void Circuit::addAllNodesToCircuit(const std::map<std::string, std::string>& nod
 {
     //ONDERZOEK VISITOR IMPLEMENTATIE
 
-    for (auto const& p : nodeDescriptions) {
-        std::string nodeId = p.first;
-        std::string nodeDescription = p.second;
+    for (auto const& itDescription : nodeDescriptions) {
+        std::string nodeId = itDescription.first;
+        std::string nodeDescription = itDescription.second;
 
         if (nodeDescription == STR_INPUT_HIGH || nodeDescription == STR_INPUT_LOW)
         {
@@ -135,9 +140,9 @@ void Circuit::addAllNodesToCircuit(const std::map<std::string, std::string>& nod
 void Circuit::addAllEdgesToCircuit(const std::map<std::string, std::vector<std::string>>& nodeEdges)
 {
 
-    for (auto const& p : nodeEdges) {
-        for (auto const& b : p.second) {
-            this->linkComponent(p.first, b);
+    for (auto const& itNodeEdge : nodeEdges) {
+        for (auto const& itBaseNode : itNodeEdge.second) {
+            this->linkComponent(itNodeEdge.first, itBaseNode);
         }
 
     }

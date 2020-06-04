@@ -2,7 +2,7 @@
 
 #include <string>
 #include <iostream>
-#include <assert.h>
+
 
 ProbeNode ProbeNode::Instance(STR_PROBE);
 
@@ -18,17 +18,23 @@ ProbeNode::~ProbeNode()
 {
 }
 
-bool ProbeNode::compareValues()
+
+//void ProbeNode::onEventInput()
+//{
+//    this->processOutput();
+//}
+
+bool ProbeNode::processLogic()
 {
     IoState result;
 
-    for (const auto& p : this->getInputs()) {
-        result = p->getOutput();
+    for (const auto& itInput : this->getInputs()) {
+        result = itInput->getOutput();
     }
 
     this->setOutput(result);
-    this->onEventOutput();
-    return true;
+
+	return true;
 }
 
 Node* ProbeNode::clone() const
@@ -36,8 +42,7 @@ Node* ProbeNode::clone() const
     return new ProbeNode;
 }
 
-void ProbeNode::onEventOutput()
-{
-    this->joinNode();
-    //Trigger simulation
-}
+//void ProbeNode::onEventOutput()
+//{
+//    //this->joinNode();
+//}

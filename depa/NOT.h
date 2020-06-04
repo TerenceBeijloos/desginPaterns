@@ -17,6 +17,6 @@ private:
 public:
     virtual  ~NOT();
 
-    bool compareValues() override;
+    bool processLogic() override;
     Node *clone() const  override;   
  };

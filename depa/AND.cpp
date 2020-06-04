@@ -19,19 +19,18 @@ AND::~AND()
 {
 }
 
-bool AND::compareValues() //DOET MEER DAN VERGELIJKEN VAN VALUES. SPLITSEN OF NAAM VERANDEREN.
+bool AND::processLogic()
 {
     IoState result = HIGH;
-    //BETERE NAAM VOOR VARIABELEN
-    //GEEN MUTEX MAAR LOCKGUARD! ZIE R30
-    for (const auto& p : this->getInputs()) {
-        if (p->getOutput() == UNDF)
+
+    for (const auto& itInput : this->getInputs()) {
+        if (itInput->getOutput() == UNDF)
         {
-            //this->setOutput(UNDF);
+            this->setOutput(UNDF);
             return false;
         }
 
-        if (p->getOutput() == LOW)
+        if (itInput->getOutput() == LOW)
         {
             result = LOW;
         }
@@ -39,10 +38,6 @@ bool AND::compareValues() //DOET MEER DAN VERGELIJKEN VAN VALUES. SPLITSEN OF NA
     }
 
     this->setOutput(result);
-
-    //std::cout << "nodeid: " << this->getNodeID() << "\tResult: " << this->getOutput() << std::endl;
-
-    this->onEventOutput();
 
     return true;
 }

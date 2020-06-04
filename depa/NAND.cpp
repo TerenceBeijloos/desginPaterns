@@ -17,18 +17,18 @@ NAND::~NAND()
 {
 }
 
-bool NAND::compareValues()
+bool NAND::processLogic()
 {
     IoState result = LOW;
 
-    for (const auto& p : this->getInputs()) {
-        if (p->getOutput() == UNDF)
+    for (const auto& itInput : this->getInputs()) {
+        if (itInput->getOutput() == UNDF)
         {
             this->setOutput(UNDF);
             return false;
         }
 
-        if (p->getOutput() == HIGH)
+        if (itInput->getOutput() == HIGH)
         {
             result = HIGH;
         }
@@ -36,7 +36,6 @@ bool NAND::compareValues()
     }
 
     this->setOutput(result);
-    this->onEventOutput();
 
     return true;
 }

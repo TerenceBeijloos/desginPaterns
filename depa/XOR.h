@@ -17,6 +17,6 @@ private:
 public:
     virtual  ~XOR();
 
-    bool compareValues() override;
+    bool processLogic() override;
     Node *clone() const  override;   
  };

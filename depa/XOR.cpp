@@ -15,17 +15,17 @@ XOR::~XOR()
 {
 }
 
-bool XOR::compareValues() {
+bool XOR::processLogic() {
     IoState result = LOW;
 
-    for (const auto& p : this->getInputs()) {
-        if (p->getOutput() == UNDF)
+    for (const auto& itInput : this->getInputs()) {
+        if (itInput->getOutput() == UNDF)
         {
             this->setOutput(UNDF);
             return false;
         }
 
-        if (p->getOutput() == HIGH)
+        if (itInput->getOutput() == HIGH)
         {
             result = (result == HIGH) ? LOW : HIGH;
         }
@@ -33,7 +33,6 @@ bool XOR::compareValues() {
     }
 
     this->setOutput(result);
-    this->onEventOutput();
 
     return true;
 }

@@ -16,7 +16,7 @@ private:
 public:
     virtual  ~InputNodeHigh();
 
-    bool compareValues() override;
+    bool processLogic() override;
     Node* clone() const  override;
-    void onEventOutput() override;
+    //void onEventOutput() override;
 };

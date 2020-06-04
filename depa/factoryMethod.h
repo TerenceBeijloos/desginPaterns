@@ -1,7 +1,6 @@
 #pragma once
 
 #include <map>
-#include <assert.h>
 
 namespace Factory
 {
@@ -21,7 +20,6 @@ namespace Factory
         typedef std::map<nodeType, const Class*> FactoryMap;
 
         static  FactoryMap& getMap();
-
     private:
         friend Class;
     };

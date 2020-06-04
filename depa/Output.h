@@ -2,6 +2,8 @@
 #include "Defines.h"
 #include <string>
 #include <mutex>
+#include <atomic>
+#include <map>
 
 class Output
 {
@@ -10,11 +12,11 @@ public:
 	virtual ~Output();
 
 	IoState getOutput() const;
-	IoState toIoState(std::string);
+	std::string getOutputString() const;
 
 	void setOutput(const IoState&);
 
 private:
-	std::mutex _mtx;
-	IoState _Output;
+	std::atomic<IoState> _Output;
+	std::map<IoState, std::string> _OutputMap;
 };

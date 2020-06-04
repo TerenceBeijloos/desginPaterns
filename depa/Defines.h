@@ -11,11 +11,15 @@
 #define STR_INPUT_LOW				"INPUT_LOW"
 
 #define STR_PROBE					"PROBE"
-#define STR_INPUT_NODE_HIGH			"INPUT_NODE_HIGH"
-#define STR_INPUT_NODE_LOW			"INPUT_NODE_LOW"
+#define STR_INPUT_NODE_HIGH			STR_INPUT_HIGH
+#define STR_INPUT_NODE_LOW			STR_INPUT_LOW
 
 
 #define STR_NODE					"NODE"
+
+#define STR_LOW                     "LOW"
+#define STR_HIGH                    "HIGH"
+#define STR_UNDF                    "UNDEFINED"
 
 #define CHAR_COMMENT				'#'
 #define CHAR_DESCRIPTION_SEPERATOR	':'
@@ -28,3 +32,4 @@ typedef enum {ENUM_INPUT_NODE, ENUM_LOGIC_NODE, ENUM_PROBE_NODE, ENUM_ERROR_TYPE
 typedef enum {ENUM_INPUT, ENUM_OUTPUT} IoType;
 
 typedef enum {LOW, HIGH, UNDF} IoState; //Order is important!
+ 
