@@ -123,7 +123,7 @@ void Circuit::addAllNodesToCircuit(const std::map<std::string, std::string>& nod
 
         pNode->setCircuit(this);
         pNode->setNodeID(nodeId);
-        
+        pNode->accept(visitor);
 
     }
 }
