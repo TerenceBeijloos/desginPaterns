@@ -4,7 +4,6 @@
 #include <string>
 
 #include <iostream>
-#include <atomic>
 
 AND AND::Instance( STR_AND );
 
@@ -14,7 +13,7 @@ AND::AND()
 
 AND::AND( std::string id ) : Node(id)
 {
-    //std::atomic<IoType> test; KIJK HIER NAAR!
+
 }
 
 AND::~AND()

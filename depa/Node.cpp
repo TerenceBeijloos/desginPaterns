@@ -41,8 +41,6 @@ bool Node::processOutput()
         if (!this->processLogic()){
             return false;
         }
-        //std::this_thread::sleep_for(std::chrono::milliseconds(300));
-        //std::cout << this->_thd.get_id() << " " << this->getNodeID() << " output " << this->getOutput() << std::endl;
     }
 
     //this->onEventOutput();
@@ -69,7 +67,6 @@ void Node::setCircuit(Circuit* circuit)
 //}
 
 void Node::joinNode() {
-    //this->_thd.detach();
     if (this->_thd.joinable())
     {
         this->_thd.join();
@@ -78,10 +75,6 @@ void Node::joinNode() {
 
 bool Node::allInputsDefined()
 {
-    //if (this->getInputs().empty())
-    //{
-    //    return true;
-    //}
 
     for (auto const& itInput : this->getInputs()) {
         if (itInput->getOutput() == UNDF)
@@ -118,7 +111,6 @@ void Node::spawnThread()
     {
         this->_thd = std::thread(&Node::processOutput, this);
     }
-    //this->_thd.detach();
 }
 
 void Node::setNodeType(const NodeType& type)

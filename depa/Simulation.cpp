@@ -22,13 +22,6 @@ void Simulation::start(const std::string& circuitSelected)
 
     while (threadRipper.startNextWave());
     threadRipper.joinJoiner();
-    //for (auto const& itLogicNode : this->_circuitMap.at(circuitSelected)->nodeCircuit.getLogicNodes()) {
-    //    itLogicNode.first->spawnThread();
-    //}
-
-    //for (auto const& itProbeNode : this->_circuitMap.at(circuitSelected)->nodeCircuit.getProbeNodes()) {
-    //    itProbeNode.first->spawnThread();
-    //}
 }
 
 std::string Simulation::createCircuit(std::string circuitID, std::string fileName)

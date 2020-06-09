@@ -9,6 +9,50 @@ InputFileHandler::~InputFileHandler()
 {
 }
 
+void InputFileHandler::processLine(bool& flag, bool& skip, std::string& name, std::string& desc, const std::string& line)
+{
+
+	skip = true;
+	flag = false;
+	name = "";
+	desc = "";
+
+	for (int i = 0; i < line.size(); i++)
+	{
+		skip = false;
+		if (line.at(i) == CHAR_COMMENT)
+		{
+			skip = true;
+			break;
+		}
+		if (line.at(i) == CHAR_LINE_END)
+		{
+			break;
+		}
+		if (line.at(i) == CHAR_DESCRIPTION_SEPERATOR)
+		{
+			flag = true;
+			i++;
+		}
+		if ((flag == false) && (!std::isspace(line.at(i))))
+		{
+			name += line.at(i);
+		}
+		else if ((flag == true) && (!std::isspace(line.at(i))))
+		{
+			desc += line.at(i);
+		}
+	}
+
+}
+
+void InputFileHandler::createEdge(const std::string& name, const std::string& desc)
+{
+	std::vector<std::string> filteredNodes;
+	this->filterNodes(CHAR_SEPARATOR, desc, filteredNodes);
+	this->addEdge(name, filteredNodes);
+}
+
 bool InputFileHandler::processFile()
 {
 	std::string name = "";
@@ -16,7 +60,8 @@ bool InputFileHandler::processFile()
 	std::string line;
 
 	bool flag = false;
-	
+	bool skip = true;
+
 	std::ifstream InputFile;
 
 
@@ -26,51 +71,17 @@ bool InputFileHandler::processFile()
 	{
 		while (std::getline(InputFile, line))
 		{
-			bool skip = true;
-			flag = false;
-			name = "";
-			desc = "";
 
-			for (int i = 0; i < line.size(); i++)
-			{
-				skip = false;
-				if (line.at(i) == CHAR_COMMENT)
-				{
-					skip = true;
-					break;
-				}
-				if (line.at(i) == CHAR_LINE_END)
-				{
-					break;
-				}
-				if (line.at(i) == CHAR_DESCRIPTION_SEPERATOR)
-				{
-					flag = true;
-					i++;
-				}
-				if ((flag == false) && (!std::isspace(line.at(i))))
-				{
-					name += line.at(i);
-				}
-				else if ((flag == true) && (!std::isspace(line.at(i))))
-				{
-					desc += line.at(i);
-				}
-			}
+			this->processLine(flag, skip, name, desc, line);
 
 			if (skip)
 			{
 				continue;
 			}
 
-			if (name == "") {
-				std::cout << "here";
-			}
 			if (this->nodeExists(name))
 			{
-				std::vector<std::string> filteredNodes;
-				this->filterNodes(CHAR_SEPARATOR, desc, filteredNodes);
-				this->addEdge(name, filteredNodes);
+				this->createEdge(name, desc);
 			}
 			else
 			{

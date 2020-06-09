@@ -1,5 +1,4 @@
 #include "ThreadHandler.h"
-//#include "NodeDatabase.h"
 #include "ErrorHandling.h"
 
 bool ThreadHandler::startNextWave()
@@ -117,10 +116,3 @@ void ThreadHandler::joinJoiner()
 		this->_joiner.join();
 	}
 }
-
-//void ThreadHandler::joinWave()
-//{
-//	for (auto const& itNode : this->_currentWave) {
-//		itNode.first->joinNode();
-//	}
-//}

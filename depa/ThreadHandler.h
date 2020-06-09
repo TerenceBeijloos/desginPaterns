@@ -3,9 +3,6 @@
 #include "Node.h"
 #include "NodeDatabase.h"
 
-//class NodeDatabase;
-//class Node;
-
 class ThreadHandler
 {
 public:
@@ -15,7 +12,6 @@ public:
 	void setNodeDatabase(NodeDatabase& nodeDb);
 
 	bool startNextWave();
-	//void joinWave();
 	void startWave();
 
 	void joinJoiner();

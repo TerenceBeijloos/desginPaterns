@@ -6,7 +6,6 @@
 #include <thread>
 
 
-//#include "NodeThread.h"
 class Visitor;
 class Circuit;
 
@@ -18,7 +17,6 @@ private:
     Circuit* _circuit;
     std::thread _thd;
     std::mutex _mtx;
-    //NodeThread _nodeThread;
 protected:
                     Node();
                     Node(std::string id);

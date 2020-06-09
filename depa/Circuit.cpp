@@ -112,7 +112,6 @@ std::list<Node*>& Circuit::getOutputs(const NodeType& layerType, Node* node)
 
 void Circuit::addAllNodesToCircuit(const std::map<std::string, std::string>& nodeDescriptions)
 {
-    //ONDERZOEK VISITOR IMPLEMENTATIE
 
     for (auto const& itDescription : nodeDescriptions) {
         std::string nodeId = itDescription.first;

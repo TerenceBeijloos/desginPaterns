@@ -25,6 +25,11 @@ ProbeNode::~ProbeNode()
 //    this->processOutput();
 //}
 
+//void ProbeNode::onEventOutput()
+//{
+//    //this->joinNode();
+//}
+
 void ProbeNode::accept(Visitor& v)
 {
     v.visit(this);
@@ -48,7 +53,4 @@ Node* ProbeNode::clone() const
     return new ProbeNode;
 }
 
-//void ProbeNode::onEventOutput()
-//{
-//    //this->joinNode();
-//}
+
